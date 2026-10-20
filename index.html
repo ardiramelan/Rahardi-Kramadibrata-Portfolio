@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e6eaed;--sf:#f6f8f9;--ink:#14181d;--mu:#536270;--ln:#c4ccd4;--ac:#2f5bea;--a2:#d9480f;--ok:#0d7a54;--cd:#14181d;--ct:#c9d6e2;
+--d:'Unbounded',system-ui,sans-serif;--b:'IBM Plex Sans',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161b;--sf:#1a2128;--ink:#e8edf1;--mu:#93a1ae;--ln:#2b353f;--ac:#6f9bff;--a2:#ff7a3d;--ok:#35d49a;--cd:#0a0e12}}
+:root[data-theme="dark"]{--bg:#11161b;--sf:#1a2128;--ink:#e8edf1;--mu:#93a1ae;--ln:#2b353f;--ac:#6f9bff;--a2:#ff7a3d;--ok:#35d49a;--cd:#0a0e12}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--b)}
+h1,h2,h3{font-family:var(--d);font-weight:500;line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(22px,4vw,32px);margin-bottom:6px}h3{font-size:16px;margin-bottom:6px}
+p,li{max-width:68ch}.w{max-width:1040px;margin:0 auto;padding:0 20px}
+.hero{position:relative;overflow:hidden;padding:48px 0 28px}
+.hero:before{content:"";position:absolute;inset:0;opacity:.5;background:linear-gradient(var(--ln) 1px,transparent 1px) 0 0/36px 36px,linear-gradient(90deg,var(--ln) 1px,transparent 1px) 0 0/36px 36px;-webkit-mask:linear-gradient(#000,transparent 85%);mask:linear-gradient(#000,transparent 85%)}
+.hg{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
+h1{font-size:clamp(38px,8.5vw,80px);font-weight:700;margin:6px 0 14px}
+.kick{color:var(--a2);font-weight:600}.lead{color:var(--mu);font-size:18px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px var(--b);cursor:pointer;text-decoration:none}
+.btn.p{background:var(--ac);border-color:var(--ac);color:#fff}.btn:focus-visible,.tab:focus-visible,input:focus-visible,.st:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+#walker{width:100%;height:auto;max-height:300px}
+.band{position:relative;margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);border-bottom:1px solid var(--ln)}
+.band>div{padding:16px 18px 16px 0}.band>div+div{padding-left:18px;border-left:1px solid var(--ln)}
+.band b{display:block;font:700 clamp(26px,5vw,42px)/1.1 var(--d);font-variant-numeric:tabular-nums}.band b i{font:500 .4em var(--b);font-style:normal;color:var(--mu)}
+.band span{color:var(--mu);font-size:14px;display:block;margin-top:4px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--ln)}
+.tr{display:flex;gap:4px;overflow-x:auto;padding:0 20px;max-width:1040px;margin:0 auto}
+.tab{flex:0 0 auto;background:none;border:0;border-bottom:3px solid transparent;color:var(--mu);padding:14px 16px 11px;font:500 15px var(--b);cursor:pointer}
+.tab b{font-family:var(--d);font-weight:700;margin-right:6px;color:var(--ink)}.tab[aria-selected=true]{color:var(--ink);border-color:var(--a2)}
+main{padding:36px 0 20px}.panel[hidden]{display:none}.sub{color:var(--mu);margin-bottom:20px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:22px}
+.c{background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:18px 20px}
+.c.l{border-left:4px solid var(--ac)}.c.l:nth-child(2){border-left-color:var(--a2)}.c.l:nth-child(3){border-left-color:var(--ok)}
+.c p{color:var(--mu);font-size:15px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.tags span{border:1px solid var(--ln);border-radius:999px;padding:1px 10px;font-size:13px}
+.lab{display:grid;grid-template-columns:minmax(0,330px) 1fr;gap:24px;margin-bottom:22px}
+#ctl label{display:flex;justify-content:space-between;font-size:14px;margin-top:8px}#ctl output{font-weight:600;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--a2)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin-top:16px;padding-top:12px;border-top:1px solid var(--ln)}
+dt{color:var(--mu);font-size:14px}dd{font-weight:600;font-variant-numeric:tabular-nums}.warn{color:var(--a2);font-size:13px;grid-column:1/-1}
+.flow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;counter-reset:s}
+.st{counter-increment:s;border:1px solid var(--ln);background:var(--sf);color:var(--ink);border-radius:999px;padding:6px 14px;font:500 14px var(--b);cursor:pointer}
+.st:before{content:counter(s);display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ln);margin-right:8px;font-size:12px}
+.st[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}.st[aria-pressed=true]:before{background:var(--a2);color:#fff}
+#fd{min-height:84px;margin-bottom:24px}
+.ck{list-style:none;padding:0;display:grid;gap:6px;margin-top:8px}.ck li:before{content:"\2713";color:var(--ok);font-weight:700;margin-right:10px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.chip{border:1px solid var(--ln);background:var(--sf);color:var(--ink);padding:4px 12px;border-radius:999px;font:500 13px var(--b);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:#fff}
+.tw{overflow-x:auto;border:1px solid var(--ln);border-radius:6px;background:var(--sf)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--ln)}th{color:var(--mu);font-weight:500}tr.on td{color:var(--mu);text-decoration:line-through}tr.on td:last-child{text-decoration:none}
+.pg{height:8px;background:var(--ln);border-radius:9px;overflow:hidden;margin:6px 0 12px;max-width:340px}.pg i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.note{color:var(--mu);font-size:13px;margin-top:8px}
+pre{background:var(--cd);color:var(--ct);padding:16px;border-radius:6px;overflow-x:auto;font:13px/1.55 ui-monospace,Menlo,Consolas,monospace;margin:10px 0 22px}
+.loop{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;counter-reset:l;margin:10px 0 24px}.loop li{counter-increment:l;background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:8px 14px;font-size:14px}.loop li:before{content:counter(l) ".";color:var(--a2);font-weight:600;margin-right:6px}
+.br{display:grid;grid-template-columns:150px 1fr 70px;gap:12px;align-items:center;margin:10px 0}.bt{height:18px;background:var(--ln);border-radius:3px;overflow:hidden}.bt i{display:block;height:100%;width:0;background:var(--ac);transition:width 1s cubic-bezier(.2,.8,.2,1)}.br:nth-child(n+2) .bt i{background:var(--a2)}.br b{text-align:right;font-variant-numeric:tabular-nums}
+.ok{display:inline-block;background:var(--ok);color:#fff;border-radius:999px;padding:2px 12px;font-size:13px;font-weight:600}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 20px}.sum button{text-align:left;background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:12px 14px;color:var(--ink);font:500 14px var(--b);cursor:pointer}.sum b{display:block;font-family:var(--d)}
+.vid{aspect-ratio:16/9;background:var(--cd);border-radius:6px;display:grid;place-items:center;overflow:hidden;max-width:820px}.vid iframe{width:100%;height:100%;border:0}
+.fg{margin:0 0 24px}.gs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.fg figure{margin:0;background:var(--cd);border:1px solid var(--ln);border-radius:6px;overflow:hidden}.fg img{display:block;width:100%;height:auto;aspect-ratio:848/464}.fg figcaption{padding:9px 14px;font-size:13px;color:#c9d6e2;border-top:3px solid var(--a2)}
+section.v{padding:26px 0 40px;border-top:1px solid var(--ln)}footer{padding:20px 0 40px;color:var(--mu);font-size:14px;border-top:1px solid var(--ln)}
+@media(max-width:760px){.hg,.lab{grid-template-columns:1fr}.br{grid-template-columns:100px 1fr 60px}.band>div{padding-right:10px}.band>div+div{padding-left:10px}.band span{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bt i,.pg i{transition:none}}
+.pj{background:var(--ink);color:var(--bg);padding:16px 0 18px}
+.pjt{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pjt span{font:500 15px var(--d);letter-spacing:-.01em}
+.pt{margin-left:auto;background:none;color:inherit;border:1px solid currentColor;border-radius:999px;padding:5px 14px;font:500 13px var(--b);cursor:pointer;opacity:.75}
+.pjr{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.pb{text-align:left;background:transparent;color:inherit;border:2px solid rgba(127,127,127,.45);border-radius:10px;padding:14px 16px;cursor:pointer;font:400 14px/1.4 var(--b);transition:border-color .15s,background .15s}
+.pb small{display:block;font-size:12px;opacity:.7;margin-bottom:2px}
+.pb b{display:block;font:700 clamp(16px,2.2vw,20px)/1.2 var(--d);margin-bottom:4px}
+.pb span{display:block;font-size:13px;opacity:.8}
+.pb:hover{border-color:var(--a2)}
+.pb[aria-pressed=true]{background:var(--a2);border-color:var(--a2);color:#fff}
+.pb[aria-pressed=true] small,.pb[aria-pressed=true] span{opacity:.95}
+.pt:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+.fh{font:500 15px var(--d);color:var(--ink);margin-bottom:10px}footer .pb{color:var(--ink)}
+@media(max-width:760px){.pjr{grid-template-columns:1fr}.pb span{display:none}.pb{padding:10px 14px}}
+.pb:focus-visible,.tl:focus-visible,.zm:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+.band.b4{grid-template-columns:repeat(4,1fr)}
+.tl{flex:0 0 auto;color:var(--mu);padding:14px 16px 11px;text-decoration:none;font:500 15px var(--b);border-bottom:3px solid transparent}.tl:hover{color:var(--ink);border-color:var(--a2)}
+.bs{padding-bottom:40px}.bs h3{margin-top:26px}
+.tln{list-style:none;padding:0;margin:8px 0 0 14px;border-left:2px solid var(--ln)}
+.tln>li{position:relative;padding:0 0 30px 30px;max-width:none}
+.tln>li:before{content:attr(data-n);position:absolute;left:-15px;top:-2px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:700 13px var(--d)}
+.tln>li h3{margin-top:0}.tln p{color:var(--mu)}
+.ph{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;align-items:flex-start}
+.zm{padding:0;border:1px solid var(--ln);border-radius:6px;overflow:hidden;background:var(--cd);cursor:zoom-in}
+.zm img,.vw img{display:block;height:280px;width:auto;max-width:100%}
+.vw{margin:0;border:1px solid var(--ln);border-radius:6px;overflow:hidden;background:var(--cd)}.vw figcaption{padding:6px 10px;font-size:12px;color:#c9d6e2;border-top:3px solid var(--a2)}
+.kv{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.kv span{border:1px solid var(--ln);border-radius:999px;padding:1px 10px;font-size:13px;font-variant-numeric:tabular-nums}
+.c.l:nth-child(4){border-left-color:var(--ink)}
+.sl{display:flex;justify-content:space-between;margin-top:6px;font-size:14px}.sl output{font-weight:600}
+#soc,#cv{width:100%;height:auto;display:block}
+.sch{background:#f5f4ef}.sch svg{display:block;min-width:900px;width:100%;height:auto}
+dialog#lb{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh}dialog#lb::backdrop{background:rgba(0,0,0,.85)}
+#lb img{display:block;max-width:94vw;max-height:84vh;margin:auto;border-radius:6px}
+#lb p{color:#fff;text-align:center;margin:10px auto 0;font-size:14px}#lb button{display:block;margin:10px auto 0}
+@media(max-width:760px){.band.b4{grid-template-columns:repeat(2,1fr)}.band.b4>div:nth-child(3){border-left:0;padding-left:0}.zm img,.vw img{height:200px}}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:14px 0 8px}
+.gal .vw img{height:auto;width:100%}
+.ph2{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-top:12px}.ph2 .zm img{height:auto;width:100%}
+.tier{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.tier>div{border-radius:6px;padding:18px 20px;border:1px solid var(--ln);background:var(--sf)}
+.tier>div:last-child{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tier b{display:block;font:700 34px/1.1 var(--d);margin-bottom:6px}.tier>div:last-child b{color:var(--a2)}
+.tier p{font-size:15px}
+.astar{display:grid;gap:2px;margin:12px 0;user-select:none;max-width:760px}
+.ac{aspect-ratio:1;background:var(--ln);border-radius:2px;cursor:pointer;transition:background .15s}
+.ac.w{background:var(--ink)}.ac.v{background:var(--ac);opacity:.45}.ac.p{background:var(--a2);opacity:1}
+.ac.s{background:var(--ok);opacity:1}.ac.g{background:#d43d3d;opacity:1}
+.asb{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:760px){.tier{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.ac{transition:none}}
+.sld{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px;align-items:start}
+#sld,#ech{width:100%;height:auto;display:block}
+#sld .nd{cursor:pointer;outline:none}#sld .nd rect{transition:stroke-width .15s}
+#sld .nd:hover rect,#sld .nd.on rect{stroke-width:4}#sld .nd:focus-visible rect{stroke:var(--a2);stroke-width:4}
+.leg{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mu);margin-top:8px}.leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+#nd .tags{margin-top:10px}
+.kpi2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.bg2{font:700 40px/1.1 var(--d);margin:6px 0}
+.gauge{height:14px;background:var(--ln);border-radius:9px;position:relative;margin:14px 0 6px}.gauge i{position:absolute;left:0;top:0;bottom:0;background:var(--ok);border-radius:9px}.gauge b{position:absolute;top:-5px;bottom:-5px;width:3px;background:#d43d3d}
+@media(max-width:860px){.sld,.kpi2{grid-template-columns:1fr}}
+.gds{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.gd{min-width:92px;border-radius:8px;padding:10px 12px;color:#fff;text-align:center}.gd b{display:block;font:700 30px/1 var(--d)}.gd span{font-size:12px}
+.sp{display:inline-block;border-radius:999px;padding:1px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+.sp.d{background:#d43d3d;color:#fff}.sp.p{background:#f0c040;color:#3a2a00}.sp.o{background:var(--ok);color:#fff}.sp.n{background:var(--ln);color:var(--ink)}
+.sk{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin:10px 0}
+.sk button{text-align:left;background:var(--sf);border:1px solid var(--ln);border-left:5px solid;border-radius:6px;padding:7px 9px;font:400 12px/1.35 var(--b);color:var(--ink);cursor:pointer}
+.sk button b{display:block;font-size:13px}.sk button[aria-pressed=true]{outline:2px solid var(--a2)}
+#hv{width:100%;height:auto;display:block}
+.insh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}
+</style>
+</head>
+<body>
+<div class="pj"><div class="w"><div class="pjt"><span>My portfolio contains 5 projects. Choose one:</span><a class="pt" href="id.html" style="text-decoration:none">Bahasa Indonesia</a><button class="pt" type="button" id="th2" style="margin-left:8px">Switch theme</button></div><div class="pjr"><button class="pb" type="button" data-p="p1" aria-pressed="true"><small>Project 1</small><b>Bipedal Robot</b><span>Design, fabrication, RL in MuJoCo, through Sim2Real</span></button><button class="pb" type="button" data-p="p2" aria-pressed="false"><small>Project 2</small><b>Battery Pack 72V 30Ah</b><span>LFP 24S1P, top balancing, JK BMS settings</span></button><button class="pb" type="button" data-p="p3" aria-pressed="false"><small>Project 3</small><b>Introduction to Robotics Class</b><span>Teaching 4 modules, from hardware to AI</span></button><button class="pb" type="button" data-p="p4" aria-pressed="false"><small>Project 4</small><b>Industrial Power Distribution 2.5 MVA</b><span>20 kV SLD, short-circuit and arc flash studies, BESS + PV</span></button><button class="pb" type="button" data-p="p5" aria-pressed="false"><small>Project 5</small><b>MEP Inspection Engineer</b><span>Residential inspections: electrical, HVAC, plumbing</span></button></div></div></div>
+<div id="p1">
+<header class="hero">
+<div class="w hg">
+ <div>
+  <p class="kick">Robotics project portfolio</p>
+  <h1>Bipedal Robot</h1>
+  <p class="lead">A two-legged robot I built from start to finish: sketches, engineering calculations, 3D design, fabrication, reinforcement learning training in MuJoCo, and transfer to the physical robot.</p>
+  <div class="cta"><a class="btn p" href="#video">Watch the project video</a><button class="btn" id="th" type="button">Switch theme</button></div>
+ </div>
+ <svg id="walker" viewBox="0 0 300 260" role="img" aria-label="Animated skeleton of a walking bipedal robot leg"></svg>
+</div>
+<div class="w"><div class="band">
+ <div><b>6 <i>cm/s</i></b><span>Physical robot walks without falling (1.B)</span></div>
+ <div><b>10 <i>cm/s</i></b><span>Locomotion from reinforcement learning in MuJoCo (1.C)</span></div>
+ <div><b>10 <i>cm/s</i></b><span>Sim2Real: physical robot matches the simulation (1.D)</span></div>
+</div></div>
+</header>
+
+<nav id="tabs"><div class="tr" role="tablist" aria-label="Project phases">
+ <button class="tab" role="tab" data-t="pA" aria-selected="true"><b>1.A</b>Planning</button>
+ <button class="tab" role="tab" data-t="pB" aria-selected="false"><b>1.B</b>Procurement &amp; Building</button>
+ <button class="tab" role="tab" data-t="pC" aria-selected="false"><b>1.C</b>MuJoCo Simulation</button>
+ <button class="tab" role="tab" data-t="pD" aria-selected="false"><b>1.D</b>Sim2Real</button>
+</div></nav>
+
+<main class="w">
+<section class="panel" id="pA">
+ <h2>1.A Planning Phase</h2><p class="sub">From an idea on paper to a 3D model ready for fabrication.</p>
+ <div class="fg"><figure><img src="assets/287855b38e36.webp" alt="Footage of hand sketches, Fusion 360 3D design, and robot exploded view" loading="lazy"><figcaption>Original footage: hand sketches, 3D design in Fusion 360, and exploded view.</figcaption></figure></div>
+ <div class="g3">
+  <div class="c l"><h3>Rough sketch (Concept)</h3><p>Exploring leg shape, joint positions, and actuator placement before locking in the numbers.</p></div>
+  <div class="c l"><h3>Engineering analysis</h3><p>Calculations to define specifications before buying components.</p><div class="tags"><span>Kinematics</span><span>Torque requirements</span><span>Motor power requirements</span></div></div>
+  <div class="c l"><h3>3D design in Fusion 360</h3><p>The entire robot was modeled in Autodesk Fusion 360 as the basis for the BOM, fabrication, and simulation.</p></div>
+ </div>
+ <div class="c lab">
+  <div><h3>Try it: leg kinematics and torque requirements</h3><p class="sub" style="margin-bottom:10px;font-size:14px">Move the sliders to see joint angles (two-link inverse kinematics) and the estimated static torque when one leg carries the full mass. Default values are illustrative only.</p>
+   <svg id="leg" viewBox="0 0 320 270" role="img" aria-label="Two-link leg diagram"><line id="gl" x1="30" x2="290" stroke="var(--mu)" stroke-width="2"/><line id="gf" stroke="var(--a2)" stroke-width="2" stroke-dasharray="5 4"/><polyline id="lp" fill="none" stroke="var(--ink)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle id="hj" r="8" fill="var(--ac)"/><circle id="kj" r="7" fill="var(--ac)"/><circle id="fj" r="6" fill="var(--a2)"/></svg></div>
+  <div><div id="ctl"></div><dl id="out"></dl></div>
+ </div>
+ <button class="btn p" data-go="pB">Continue to 1.B</button>
+</section>
+
+<section class="panel" id="pB" hidden>
+ <h2>1.B Procurement &amp; Building Phase</h2><p class="sub">From a parts list to a robot proven to walk. Click each stage.</p>
+ <div class="fg"><div class="gs"><figure><img src="assets/464928cf47c3.webp" alt="Footage of printing parts on a Bambu Lab, assembly, and leg joint testing" loading="lazy"><figcaption>Original footage: printing parts on a Bambu Lab, assembly, and leg joint testing.</figcaption></figure><figure><img src="assets/9ffb16589154.webp" alt="Footage of forward kinematics firmware and a walking test at 6 cm/s" loading="lazy"><figcaption>Original footage: forward kinematics firmware, then a walking test at 6 cm/s.</figcaption></figure></div></div>
+ <div class="flow" id="flow"></div><div class="c" id="fd"></div>
+ <h3>Bill of Materials with McMaster-Carr links</h3>
+ <p class="sub" style="margin-bottom:6px;font-size:14px">Tick the items already purchased. Each row opens the McMaster-Carr page.</p>
+ <div class="pg"><i id="pgb"></i></div><p class="note" id="pgt" style="margin:-6px 0 8px"></p>
+ <div class="chips" id="chips"></div>
+ <div class="tw"><table><thead><tr><th>Bought</th><th>Item</th><th>Specification</th><th>Qty</th><th>Category</th><th>McMaster</th></tr></thead><tbody id="bom"></tbody></table></div>
+ <p class="note">Items in this table are examples. Replace them with the project BOM in the BOM array in the code, and add part numbers so each link goes straight to the right part.</p>
+ <div class="c l" style="margin:24px 0"><h3>Success criteria: achieved</h3><ul class="ck"><li>The bipedal robot walks without falling</li><li>Walking speed reaches 6 cm/s</li></ul></div>
+ <button class="btn p" data-go="pC">Continue to 1.C</button>
+</section>
+
+<section class="panel" id="pC" hidden>
+ <h2>1.C MuJoCo Simulation for Improved Locomotion</h2><p class="sub">The robot was rebuilt in simulation, then trained to walk much faster than the original physical version.</p>
+ <div class="fg"><figure><img src="assets/c1b99f280589.webp" alt="Footage of the MuJoCo XML file, the robot falling early in training, then walking" loading="lazy"><figcaption>Original footage: MuJoCo XML file, the robot falling early in training, then walking after training.</figcaption></figure></div>
+ <h3>Custom MuJoCo XML file</h3>
+ <div class="chips" id="xsw"><button class="chip" aria-pressed="true" data-x="k">Kinematics</button><button class="chip" aria-pressed="false" data-x="d">Dynamics</button></div>
+ <pre><code id="xml"></code></pre>
+ <p class="note" style="margin-top:-14px;margin-bottom:22px">Illustrative structure. Actual values follow the robot model in Fusion 360.</p>
+ <h3>Training reinforcement learning (Q-learning)</h3>
+ <ol class="loop"><li>Observe the robot state</li><li>Policy selects joint actions</li><li>MuJoCo simulates one step</li><li>Reward is computed</li><li>Policy is updated</li></ol>
+ <h3>Speed results</h3><div id="bC"></div><p class="note">Speed increased from 6 cm/s to 10 cm/s, about 1.7 times faster.</p>
+ <button class="btn p" data-go="pD" style="margin-top:18px">Continue to 1.D</button>
+</section>
+
+<section class="panel" id="pD" hidden>
+ <h2>1.D Sim2Real</h2><p class="sub">The policy trained in simulation was transferred to the physical robot.</p>
+ <div class="fg"><figure><img src="assets/afaa38f324ae.webp" alt="Footage of the real robot walking at 10 cm/s and in 0.5x slow motion" loading="lazy"><figcaption>Original footage: physical robot walking at 10 cm/s, then 0.5x slow motion.</figcaption></figure></div>
+ <div id="bD"></div>
+ <div class="tw" style="margin:16px 0"><table style="min-width:0"><thead><tr><th>Environment</th><th>Speed</th><th>Status</th></tr></thead><tbody><tr><td>MuJoCo simulation</td><td>10 cm/s</td><td>Target</td></tr><tr><td>Physical robot</td><td>10 cm/s</td><td><span class="ok">Matches simulation</span></td></tr></tbody></table></div>
+ <h3>Project journey summary</h3>
+ <div class="sum"><button data-go="pA"><b>1.A</b>Concept, analysis, 3D design</button><button data-go="pB"><b>1.B</b>BOM, fabrication, validation: 6 cm/s</button><button data-go="pC"><b>1.C</b>XML and RL in MuJoCo: 10 cm/s</button><button data-go="pD"><b>1.D</b>Sim2Real: 10 cm/s</button></div>
+</section>
+</main>
+
+<section class="v" id="video"><div class="w">
+ <h2>Project video</h2><p class="sub">Full documentation of the Bipedal Robot project.</p>
+ <div class="vid" id="vid"><button class="btn p" id="play" type="button">Play the video on this page</button></div>
+ <p class="note"><a href="https://youtu.be/2Uuj3mBlDGQ?si=R9y783_vLSxWstyg" target="_blank" rel="noopener">Open on YouTube</a> if the video does not load.</p>
+</div></section>
+</div>
+<div id="p2" hidden>
+<header class="hero"><div class="w">
+ <p class="kick">Battery system project portfolio</p>
+ <h1>Battery Pack LFP 72V 30Ah</h1>
+ <p class="lead">A 24S1P pack of 24 LiFePO4 3.2 V 30 Ah cells with a 100 A JK BMS. I handled the entire process: cell quality testing, top balancing, assembly, and charge and discharge testing.</p>
+</div>
+<div class="w"><div class="band b4">
+ <div><b>24S1P</b><span>24 cells in series, 1 parallel</span></div>
+ <div><b>76.8 <i>V</i></b><span>Nominal, 24 x 3.2 V</span></div>
+ <div><b>2.3 <i>kWh</i></b><span>Nominal energy, 76.8 V x 30 Ah</span></div>
+ <div><b>100 <i>A</i></b><span>JK BMS rating</span></div>
+</div></div>
+</header>
+<nav><div class="tr"><a class="tl" href="#bdoc">Documentation</a><a class="tl" href="#bsoc">SOC curve and BMS settings</a><a class="tl" href="#bsch">24S1P schematic</a></div></nav>
+<main class="w">
+<section id="bdoc" class="bs">
+ <h2>Build documentation</h2><p class="sub">Click a photo to enlarge.</p>
+ <ol class="tln">
+  <li data-n="1"><h3>Materials arrived, IR testing right away</h3><p>All 24 LFP 3.2 V 30 Ah cells were checked one by one with an internal resistance (IR) test to confirm cell quality and consistency before assembly.</p><div class="ph"><button class="zm" type="button"><img src="assets/8ac2496b834d.jpg" alt="24 newly arrived LFP 30 Ah cells on the workbench" loading="lazy"></button></div></li>
+  <li data-n="2"><h3>Top balancing in groups of 4 cells</h3><p>Four cells were paralleled and charged together until their voltages matched at the top.</p><div class="ph"><button class="zm" type="button"><img src="assets/1bc9238197fe.jpg" alt="Top balancing four parallel cells with a charger" loading="lazy"></button></div></li>
+  <li data-n="3"><h3>Single-cell top balancing correction</h3><p>Cells that still deviated were corrected one at a time with a DC power supply and a step-down module.</p><div class="ph"><button class="zm" type="button"><img src="assets/826bd1df0039.jpg" alt="Single-cell top balancing with a power supply, step-down module, and clamp meter" loading="lazy"></button><figure class="vw"><img src="assets/f0b57b8dfe4f.webp" alt="Single-cell top balancing video" loading="lazy"><figcaption>Video: single-cell top balancing</figcaption></figure></div></li>
+  <li data-n="4"><h3>Measurement with a clamp meter</h3><p>Cell voltage verified with a UNI-T UT203+ clamp meter. The photo reads 3.593 V.</p><div class="ph"><button class="zm" type="button"><img src="assets/6bb4b13ba262.jpg" alt="UNI-T UT203+ clamp meter reading 3.593 V" loading="lazy"></button></div></li>
+  <li data-n="5"><h3>24S1P assembly with JK BMS</h3><p>Cells were connected in series with busbars, 25 balance leads (B0 to B24) were bundled to the BMS connector, and the pack was wrapped in insulation.</p><div class="ph"><button class="zm" type="button"><img src="assets/582515a13db5.jpg" alt="Assembled 24S1P pack with balance leads and JK BMS" loading="lazy"></button></div></li>
+  <li data-n="6"><h3>Pack reads 76.18 V</h3><p>With all 24 cells connected in series, the BMS read 76.18 V with a cell difference of 0.036 V.</p><div class="kv"><span>Average cell 3.174 V</span><span>Difference 0.036 V</span><span>Cell type LFP</span></div><div class="ph"><button class="zm" type="button"><img src="assets/9eb65dfa298a.jpg" alt="JK BMS app showing the pack at 76.18 V" loading="lazy"></button></div></li>
+  <li data-n="7"><h3>Fully charged 82.43 V, discharge test at 5.34 A</h3><p>After a full charge, the pack was discharge-tested at 5.34 A (439.8 W) with temperatures staying low.</p><div class="kv"><span>82.43 V</span><span>5.34 A</span><span>439.8 W</span><span>MOS 31.6 °C</span><span>Cells 30.5 to 30.7 °C</span></div><div class="ph"><button class="zm" type="button"><img src="assets/1b42a5e97eec.jpg" alt="JK BMS app showing 82.43 V and 5.34 A" loading="lazy"></button></div></li>
+ </ol>
+</section>
+
+<section id="bsoc" class="bs">
+ <h2>LFP SOC curve and BMS settings</h2>
+ <p class="sub">Typical rest voltage (OCV) curve of a LiFePO4 cell at 25 °C, with BMS setting limits and data measured on this pack. Move the SOC slider to read the voltage.</p>
+ <div class="c"><svg id="soc" viewBox="0 0 640 340" role="img" aria-label="SOC versus LFP cell voltage curve" font-family="IBM Plex Sans,system-ui,sans-serif"></svg>
+  <label for="socs" class="sl">SOC <output id="soco"></output></label><input type="range" id="socs" min="0" max="100" value="50" step="1">
+  <dl id="soci"></dl></div>
+ <h3>Analysis for BMS settings</h3>
+ <div class="g3">
+  <div class="c l"><h3>Flat plateau: SOC cannot be read from voltage</h3><p>Between about 20% and 90% SOC, cell voltage shifts by only about 0.15 V. That is why the BMS estimates SOC with coulomb counting and calibrates it when the pack is full. At 76.18 V (3.174 V average), the BMS showed 59% with a cycle count of 0, while the typical OCV curve points to about 19%. The BMS SOC reading only becomes reliable after one full charge.</p></div>
+  <div class="c l"><h3>Upper knee, where imbalance shows</h3><p>Above 3.40 V the curve rises sharply, so capacity differences between cells show up immediately. The cell difference grew from 0.036 V at 76.18 V to 0.136 V at 82.43 V (cell 11: 3.539 V, cell 7: 3.405 V). This is why top balancing was done before assembly and BMS balancing is set to start at 3.40 V. At the 82.43 V reading, the balance feature was OFF, so this difference had not yet been trimmed.</p></div>
+  <div class="c l"><h3>Pack voltage limits</h3><p>Nominal 24 x 3.2 V = 76.8 V. The absolute upper limit is 24 x 3.65 V = 87.6 V, while the charger only needs 84.0 to 85.2 V (3.50 to 3.55 V per cell) so the cells do not sit at the upper knee for long. The UVP lower limit of 2.80 V per cell equals 67.2 V.</p></div>
+  <div class="c l"><h3>Current and temperature</h3><p>The BMS can handle 100 A, but current limits follow the cells: 30 Ah means 1C = 30 A. The 5.34 A discharge test (about 0.18C) only raised the MOS temperature to 31.6 °C and the cells to 30.5 to 30.7 °C. The balance lead resistances that could be read were uniform, 0.326 to 0.342 Ω.</p></div>
+ </div>
+ <h3>Per-cell voltages from the BMS</h3>
+ <div class="chips" id="cvs"><button class="chip" aria-pressed="true" data-k="a">Pack 76.18 V</button><button class="chip" aria-pressed="false" data-k="b">Fully charged 82.43 V</button></div>
+ <div class="c"><svg id="cv" viewBox="0 0 640 232" role="img" aria-label="Voltages of 24 cells" font-family="IBM Plex Sans,system-ui,sans-serif"></svg><p class="note" id="cvn"></p></div>
+ <h3>Recommended JK BMS settings</h3>
+ <div class="tw"><table><thead><tr><th>Parameter</th><th>Per cell</th><th>Pack 24S</th><th>Reason</th></tr></thead><tbody>
+  <tr><td>Cell OVP</td><td>3.65 V</td><td>87.6 V</td><td>Maximum LFP cell voltage</td></tr>
+  <tr><td>Cell OVP recovery</td><td>3.55 V</td><td>85.2 V</td><td>Charging resumes</td></tr>
+  <tr><td>SOC 100% / target charge</td><td>3.50 V</td><td>84.0 V</td><td>Full SOC calibration point</td></tr>
+  <tr><td>Balancing start</td><td>3.40 V</td><td>81.6 V</td><td>Balance at the upper knee, not on the plateau</td></tr>
+  <tr><td>Balancing trigger difference</td><td>0.01 V</td><td>-</td><td>Balancing runs when the difference exceeds this value</td></tr>
+  <tr><td>Cell UVP</td><td>2.80 V</td><td>67.2 V</td><td>Discharge cut off</td></tr>
+  <tr><td>Cell UVP recovery</td><td>3.00 V</td><td>72.0 V</td><td>Discharge resumes</td></tr>
+  <tr><td>Continuous charge current</td><td>-</td><td>15 A (0.5C)</td><td>Per the cell datasheet</td></tr>
+  <tr><td>Continuous discharge current</td><td>-</td><td>30 A (1C)</td><td>Set by the cells, not the 100 A BMS rating</td></tr>
+  <tr><td>Charge temperature</td><td>-</td><td>0 to 45 °C</td><td>LFP must not be charged below 0 °C</td></tr>
+  <tr><td>Discharge temperature</td><td>-</td><td>-20 to 60 °C</td><td>Safe cell limits</td></tr>
+  <tr><td>MOS temperature protection</td><td>-</td><td>80 °C</td><td>Protects the BMS MOSFETs</td></tr>
+ </tbody></table></div>
+ <p class="note">Typical values for LFP cells. Adjust to the datasheet of the cells used.</p>
+</section>
+
+<section id="bsch" class="bs">
+ <h2>24S1P schematic with JK BMS</h2>
+ <p class="sub">KiCad-style diagram. Each inter-cell junction carries a net label B0 to B24 that connects to the BMS balance pin of the same name.</p>
+ <div class="tw sch"><svg id="sch" viewBox="0 0 1120 640" role="img" aria-label="Schematic of 24 LFP cells in series with JK BMS" font-family="ui-monospace,Menlo,Consolas,monospace"></svg></div>
+ <p class="note">Thick lines are the main current path: BMS B- to cell 1 negative, cell 24 positive to PACK+, and BMS P- to PACK-.</p>
+</section>
+</main>
+</div>
+<div id="p3" hidden>
+<header class="hero"><div class="w">
+ <p class="kick">Teaching portfolio</p>
+ <h1>Introduction to Robotics</h1>
+ <p class="lead">A course I taught at Cakrawala University. Students learn from basic electronics up to AI, then prove it with robots they build themselves in the final project presentation.</p>
+</div>
+<div class="w"><div class="band b4">
+ <div><b>4 <i>modules</i></b><span>Hardware, mechanical design, kinematics, AI</span></div>
+ <div><b>5 <i>robot types</i></b><span>Shown in the final project demo video</span></div>
+ <div><b>All</b><span>Students demonstrated an integrated robot</span></div>
+ <div><b>A+</b><span>For robots that integrate AI</span></div>
+</div></div>
+</header>
+<nav><div class="tr"><a class="tl" href="#tkur">Curriculum</a><a class="tl" href="#tpro">Final project</a><a class="tl" href="#tdemo">Try path planning</a></div></nav>
+<main class="w">
+<section id="tkur" class="bs">
+ <h2>Curriculum: from components to robots that think</h2>
+ <p class="sub">Four connected modules. Each module adds one layer of capability, and they all come together in the final project.</p>
+ <ol class="loop"><li>Hardware</li><li>Mechanical design</li><li>Kinematics design</li><li>AI implementation</li><li>Integrated final project</li></ol>
+ <div class="g3">
+  <div class="c l"><h3>Module 1: Hardware</h3><p>From basic circuits to microcontrollers that read sensors and drive servos, so students can assemble their robot’s electronic system themselves.</p><div class="tags"><span>Basic electronics</span><span>AC/DC</span><span>Microcontrollers</span><span>Sensors and actuators</span><span>Servo motor</span><span>Integrating motors and sensors</span></div></div>
+  <div class="c l"><h3>Module 2: Mechanical design</h3><p>Designing robot parts in CAD, then verifying their strength with engineering calculations and stress analysis before fabrication.</p><div class="tags"><span>3D modeling CAD</span><span>Engineering calculation</span><span>Stress analysis</span></div></div>
+  <div class="c l"><h3>Module 3: Kinematics design</h3><p>Linking joint angles to the robot’s end position, including solving inverse kinematics numerically for multi-joint arms.</p><div class="tags"><span>Forward kinematics</span><span>Inverse kinematics</span><span>Numerical methods for IK</span></div></div>
+  <div class="c l"><h3>Module 4: AI implementation</h3><p>Making robots decide for themselves: learning from rewards with reinforcement learning and finding routes with path planning algorithms.</p><div class="tags"><span>Reinforcement learning</span><span>Path planning</span></div></div>
+ </div>
+</section>
+
+<section id="tpro" class="bs">
+ <h2>Results: student-built robots</h2>
+ <p class="sub">Every student demonstrated hardware and software integrated into a usable system. Clips from the final project presentation video:</p>
+ <div class="gal">
+  <figure class="vw"><img src="assets/668a07941e9d.webp" alt="Student-built quadruped robot walking on a table" loading="lazy"><figcaption>Quadruped robot walking</figcaption></figure>
+  <figure class="vw"><img src="assets/04a70ba930b7.webp" alt="Robot arm controlled through a phone app" loading="lazy"><figcaption>Robot arm via phone app</figcaption></figure>
+  <figure class="vw"><img src="assets/e3f744900c0a.webp" alt="Mobile manipulator, a robot arm on a wheeled vehicle" loading="lazy"><figcaption>Mobile manipulator</figcaption></figure>
+  <figure class="vw"><img src="assets/816667bd4660.webp" alt="Line follower robot tracking a line" loading="lazy"><figcaption>Line follower</figcaption></figure>
+  <figure class="vw"><img src="assets/4232f72d6413.webp" alt="Robot arm moving colored blocks" loading="lazy"><figcaption>Colored block sorting arm</figcaption></figure>
+ </div>
+ <h3>Final project grading standard</h3>
+ <div class="tier">
+  <div><b>Project pass</b><p>Hardware and software integrated into a robot that genuinely works and can be demonstrated.</p></div>
+  <div><b>A+</b><p>All requirements on the left are met, plus AI integrated into the robot, such as reinforcement learning or path planning.</p></div>
+ </div>
+ <h3>In the classroom</h3>
+ <div class="ph2">
+  <button class="zm" type="button"><img src="assets/ba8fd713b0a5.jpg" alt="Students presenting their project schematic diagram" loading="lazy"></button>
+  <button class="zm" type="button"><img src="assets/10b2fa860255.jpg" alt="Group photo of the Introduction to Robotics class" loading="lazy"></button>
+  <button class="zm" type="button"><img src="assets/a53c69ee6c11.jpg" alt="Students posing with their final project robots" loading="lazy"></button>
+ </div>
+</section>
+
+<section id="tdemo" class="bs">
+ <h2>Try it: A* path planning</h2>
+ <p class="sub">Sample material from the AI module. Click cells to add or remove obstacles, then find a path from the green point to the red point.</p>
+ <div class="asb"><button class="btn p" id="asr" type="button">Find path</button><button class="btn" id="asx" type="button">Random obstacles</button><button class="btn" id="asc" type="button">Clear</button></div>
+ <div class="astar" id="as" role="grid" aria-label="Path planning grid"></div>
+ <p class="note" id="asn">Blue: cells explored by the algorithm. Orange: the shortest path found.</p>
+</section>
+</main>
+</div>
+<div id="p4" hidden>
+<header class="hero"><div class="w">
+ <p class="kick">Electrical system design portfolio</p>
+ <h1>Industrial Power Distribution 2.5 MVA</h1>
+ <p class="lead">Design and engineering review of the electrical distribution system for a manufacturing facility at JIIPE, Gresik, East Java. I structured the 20 kV utility supply into production, utility, emergency, and critical power branches, plus BESS and solar PV, complete with short-circuit and arc flash studies.</p>
+ <div class="kv" style="margin-top:14px"><span>Peran: Electrical System Design &amp; Engineering Review</span><span>Software: ElecAS and AutoCAD</span></div>
+</div>
+<div class="w"><div class="band b4">
+ <div><b>2.5 <i>MVA</i></b><span>Transformer 20 kV / 400 V</span></div>
+ <div><b>3,200 <i>A</i></b><span>Main switchboard</span></div>
+ <div><b>55.1 <i>kA</i></b><span>Max short-circuit current at the MSB</span></div>
+ <div><b>1 <i>MWh</i></b><span>LFP BESS, plus 220 kWp PV</span></div>
+</div></div>
+</header>
+<nav><div class="tr"><a class="tl" href="#earc">Architecture</a><a class="tl" href="#eana">System analysis</a><a class="tl" href="#eemg">Emergency and critical power</a><a class="tl" href="#ebess">BESS and PV</a><a class="tl" href="#ekon">Contribution</a></div></nav>
+<main class="w">
+<section id="earc" class="bs">
+ <h2>Power system architecture</h2>
+ <p class="sub">A single-line diagram simplified from the full SLD. Click any panel to see its calculation results.</p>
+ <div class="sld"><div class="c"><svg id="sld" viewBox="0 0 1000 490" role="img" aria-label="Power distribution architecture diagram" font-family="IBM Plex Sans,system-ui,sans-serif"></svg><div class="leg" id="sldl"></div></div>
+ <div class="c" id="nd" aria-live="polite"></div></div>
+ <div class="g3" style="margin-top:18px">
+  <div class="c l"><h3>Distribution hierarchy</h3><p>20 kV utility, 2.5 MVA transformer, MSB, MDP, then downstream panels. Production, HVAC and utility, emergency, UPS, and BESS branches are separated for a clear protection and operating philosophy.</p></div>
+  <div class="c l"><h3>Load segregation</h3><p>Dedicated panels for Machine A/B, FCU, exhaust fans, utility loads, MCC, UPS-backed systems, and BESS-supported loads. Fault isolation, maintenance, and future design development become simpler.</p></div>
+ </div>
+</section>
+
+<section id="eana" class="bs">
+ <h2>Power system analysis</h2>
+ <p class="sub">Fault current and incident energy are treated as equipment-duty and safety inputs, not just drawing annotations. They drive interrupting ratings, protection review, arc-rated PPE requirements, and mitigation priorities.</p>
+ <div class="chips" id="ems"><button class="chip" aria-pressed="true" data-m="af">Arc flash incident energy</button><button class="chip" aria-pressed="false" data-m="isc">Max short-circuit current</button></div>
+ <div class="c"><svg id="ech" viewBox="0 0 640 320" role="img" aria-label="Analysis results chart by panel" font-family="IBM Plex Sans,system-ui,sans-serif"></svg><div class="leg" id="echl"></div></div>
+ <h3>Selected design outputs</h3>
+ <div class="tw"><table><thead><tr><th>Panel</th><th>Max demand</th><th>Max fault current</th><th>Peak current</th><th>Arc flash</th></tr></thead><tbody>
+  <tr><td>Main Switchboard</td><td>2,522.1 A</td><td>55.1 kA</td><td>121.2 kA</td><td>24.6 cal/cm²</td></tr>
+  <tr><td>Main Distribution Panel</td><td>2,263.3 A</td><td>49.2 kA</td><td>103.3 kA</td><td>10.1 cal/cm²</td></tr>
+  <tr><td>ATS / AMF</td><td>1,596.0 A</td><td>45.4 kA</td><td>95.4 kA</td><td>33.3 cal/cm²</td></tr>
+  <tr><td>SDP MCC</td><td>989.6 A</td><td>37.1 kA</td><td>77.9 kA</td><td>29.0 cal/cm²</td></tr>
+  <tr><td>SDP Machine A</td><td>341.0 A</td><td>31.0 kA</td><td>65.0 kA</td><td>25.1 cal/cm²</td></tr>
+  <tr><td>SDP BESS</td><td>153.5 A</td><td>25.3 kA</td><td>53.2 kA</td><td>1.7 cal/cm²</td></tr>
+ </tbody></table></div>
+ <div class="kpi2">
+  <div class="c"><h3>Inverter voltage rise</h3><div class="bg2">1.82%</div><div class="gauge"><i style="width:72.8%"></i><b style="left:80%"></b></div><p class="note">The PV + BESS branch passes against the 2.00% design limit (red line). Scale 0 to 2.5%.</p></div>
+  <div class="c"><h3>Power factor correction</h3><div class="bg2">400 kVAr</div><p class="note">The PFC capacitor bank raises the power factor from 0.87 to 0.96.</p></div>
+ </div>
+ <h3>Analysis coverage</h3>
+ <div class="tags"><span>Load: maximum demand</span><span>Cables: sizing and voltage drop</span><span>Fault: Isc, Ief, Ipk</span><span>Protection: CB duty and coordination</span><span>Safety: arc flash exposure</span></div>
+</section>
+
+<section id="eemg" class="bs">
+ <h2>Emergency and critical power</h2>
+ <p class="sub">Standby generation and UPS-backed loads are deliberately separated by function and sensitivity to supply interruption.</p>
+ <div class="g3">
+  <div class="c l"><h3>Emergency supply</h3><dl><dt>Standby generator</dt><dd>1,500 kVA, 400 V, about 2,165 A full-load current</dd><dt>Automatic transfer</dt><dd>ATS / AMF 2,500 A, 4-pole</dd><dt>Generator fault level</dt><dd>21.7 kA short-circuit, 23.5 kA earth fault</dd><dt>Standby distribution</dt><dd>MCC, selected production loads, HVAC, fire pump, and security</dd></dl></div>
+  <div class="c l"><h3>UPS-backed critical loads</h3><dl><dt>UPS</dt><dd>38 kVA, 21 kWh VRLA battery, 30-minute backup</dd><dt>CCTV</dt><dd>7.5 kW</dd><dt>Security system</dt><dd>10 kW</dd><dt>ICT</dt><dd>10 kW</dd><dt>Fire alarm</dt><dd>1 kW</dd></dl></div>
+ </div>
+ <p class="note">Design approach: the generator covers broader standby continuity, while the UPS provides no-break continuity for electronic and safety systems.</p>
+</section>
+
+<section id="ebess" class="bs">
+ <h2>BESS and solar PV integration</h2>
+ <p class="sub">The distributed energy system connects through a dedicated low-voltage branch (SDP BESS) with grid protection.</p>
+ <ol class="loop"><li>Solar PV 220 kWp (400 x 550 Wp)</li><li>PV + BESS inverter, grid-protected</li><li>LFP BESS 1 MWh, max DoD 80%</li><li>SDP BESS 160 A</li><li>Lighting and outdoor loads</li></ol>
+ <div class="tw"><table style="min-width:0"><tbody>
+  <tr><td>Energy storage</td><td>1 MWh LFP BESS, maximum depth of discharge 80%</td></tr>
+  <tr><td>Solar PV</td><td>220 kWp DC array of 400 x 550 Wp modules</td></tr>
+  <tr><td>Distribution</td><td>Dedicated 160 A SDP BESS</td></tr>
+  <tr><td>Supported loads</td><td>Lighting level 1 30 kW, level 2 6.7 kW, outdoor 10.8 kW</td></tr>
+  <tr><td>Voltage rise</td><td>PV + BESS branch 1.82%, passing the 2.00% limit (AS/NZS 4777.1)</td></tr>
+  <tr><td>Grid protection</td><td>Grid protection relay and CT at the main supply, with trip contactors on inverter-connected branches. Total PV in the model is 53.0 kVA, above the 30 kVA threshold, so a relay is required.</td></tr>
+ </tbody></table></div>
+ <div class="g3" style="margin-top:18px">
+  <div class="c l"><h3>Reliability</h3><p>A dedicated energy branch limits interface complexity.</p></div>
+  <div class="c l"><h3>Protection</h3><p>Grid protection relay logic coordinates inverter disconnection from the grid.</p></div>
+  <div class="c l"><h3>Energy</h3><p>BESS and PV are integrated without mixing with UPS duty.</p></div>
+ </div>
+</section>
+
+<section id="ekon" class="bs">
+ <h2>Contribution and deliverables</h2>
+ <div class="c l"><h3>My contribution</h3><ul class="ck">
+  <li>Structured the power distribution architecture and load segregation, from the JIIPE supply to production, utility, emergency, UPS, and BESS branches.</li>
+  <li>Configured and reviewed equipment ratings, feeder parameters, load allocation, and protection data in the design model.</li>
+  <li>Calculated and validated maximum demand, cable sizing, voltage drop, short-circuit duty, voltage rise, power factor, and arc flash exposure.</li>
+  <li>Integrated standby generation, UPS, BESS, and solar PV into one coordinated SLD for detailed engineering development.</li>
+  <li>Prepared a drawing package and schedules that make assumptions and design results traceable during engineering review.</li>
+ </ul></div>
+ <h3>Deliverables in the design model</h3>
+ <div class="tags"><span>Single Line Diagram</span><span>Load Schedule</span><span>Cable Schedule</span><span>Voltage Drop / Rise</span><span>Fault-Level Results</span><span>Protection Schedules</span><span>Arc-Flash Schedule</span><span>Standby / Critical Power</span></div>
+ <div class="g3" style="margin-top:18px">
+  <div class="c l"><h3>ElecAS</h3><p>Primary design and calculation platform: equipment and feeder representation, load schedule, cable schedule, voltage drop, fault current, protection schedules, grid protection notes, and arc flash. Its results are comparable to ETAP and PowerWorld at a much lower cost.</p></div>
+  <div class="c l"><h3>AutoCAD</h3><p>Drawing and producing .dwg and .dxf files for collaboration with other disciplines: civil, MEP, and structural.</p></div>
+ </div>
+ <h3>Original design drawings</h3>
+ <p class="sub" style="margin-bottom:0">Click to enlarge.</p>
+ <div class="ph2" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+  <button class="zm" type="button"><img src="assets/b9af88d34eb9.png" alt="ElecAS single line diagram of the manufacturing facility, drawn by Rahardi Kramadibrata" loading="lazy"></button>
+  <button class="zm" type="button"><img src="assets/3ecfd188d15a.png" alt="ElecAS schedules: cables, voltage drop, protection, and arc flash" loading="lazy"></button>
+ </div>
+</section>
+</main>
+</div>
+<div id="p5" hidden>
+<header class="hero"><div class="w">
+ <p class="kick">Building inspection portfolio</p>
+ <h1>MEP Inspection Engineer</h1>
+ <p class="lead">Residential MEP inspections at Inspektor Rumah: electrical, HVAC, and plumbing. Visual, non-destructive, and functional screening with measuring instruments, which I translate into system grades, prioritized findings, repair recommendations, and a cost estimate (RAB).</p>
+</div>
+<div class="w"><div class="band b4">
+ <div><b id="mi1"></b><span>Homes inspected</span></div>
+ <div><b id="mi2"></b><span>Findings recorded</span></div>
+ <div><b id="mi3"></b><span>Defects, including urgent findings</span></div>
+ <div><b id="mi4"></b><span>Total estimated repair cost (RAB, incl. VAT)</span></div>
+</div></div>
+</header>
+<nav><div class="tr"><a class="tl" href="#mmet">Method</a><a class="tl" href="#mins">Inspection results</a></div></nav>
+<main class="w">
+<section id="mmet" class="bs">
+ <h2>Inspection method</h2>
+ <p class="sub">Each system is checked with clear tools and criteria, so every finding can be traced to a number or photo evidence.</p>
+ <div class="g3">
+  <div class="c l"><h3>Electrical</h3><p>Supply voltage, panels and MCBs, RCD protection, earthing, socket polarity, phase load balance, and visual condition. Reference: PUIL 2011 (SNI 0225:2011), voltage tolerance +5% / -10%, phase imbalance threshold 10%.</p><div class="tags"><span>True RMS multimeter</span><span>Clamp meter</span><span>Socket tester</span><span>NCV tester</span><span>Test pen</span></div></div>
+  <div class="c l"><h3>HVAC</h3><p>Quick performance screening for each split AC unit: 5 samples at 5-minute intervals. The main indicator is the Room-Supply ΔT: PASS if ΔT ≥ 3 °C, REVIEW if 0 to 3 °C, FAILED if ΔT &lt; 0 °C.</p><div class="tags"><span>Anemometer</span><span>Room thermometer</span><span>Remote setpoint check</span></div></div>
+  <div class="c l"><h3>Plumbing</h3><p>Joint leaks, toilet and floor drain function, pumps, roof tank, septic tank, and gas lines, inspected visually. Components without access are recorded as Not Available.</p><div class="tags"><span>Visual inspection</span><span>Function test</span><span>Photo documentation</span></div></div>
+ </div>
+ <h3>Grade scale per system</h3>
+ <div class="gds" id="gscale"></div>
+ <p class="note">Finding status: <span class="sp o">OK</span> <span class="sp p">Needs Attention</span> <span class="sp d">Defect</span> <span class="sp n">Not Available</span></p>
+</section>
+
+<section id="mins" class="bs">
+ <h2>Inspection results</h2>
+ <p class="sub">Choose an inspection location. Full addresses are not shown to protect homeowners’ privacy.</p>
+ <div class="chips" id="insc"></div>
+ <div id="insd"></div>
+</section>
+</main>
+</div>
+<dialog id="lb"><img id="lbi" alt=""><p id="lbc"></p><button class="btn" id="lbx" type="button">Close</button></dialog>
+<footer><div class="w"><p class="fh">See other projects</p><div class="pjr"><button class="pb" type="button" data-p="p1" aria-pressed="true"><small>Project 1</small><b>Bipedal Robot</b><span>Design, fabrication, RL in MuJoCo, through Sim2Real</span></button><button class="pb" type="button" data-p="p2" aria-pressed="false"><small>Project 2</small><b>Battery Pack 72V 30Ah</b><span>LFP 24S1P, top balancing, JK BMS settings</span></button><button class="pb" type="button" data-p="p3" aria-pressed="false"><small>Project 3</small><b>Introduction to Robotics Class</b><span>Teaching 4 modules, from hardware to AI</span></button><button class="pb" type="button" data-p="p4" aria-pressed="false"><small>Project 4</small><b>Industrial Power Distribution 2.5 MVA</b><span>20 kV SLD, short-circuit and arc flash studies, BESS + PV</span></button><button class="pb" type="button" data-p="p5" aria-pressed="false"><small>Project 5</small><b>MEP Inspection Engineer</b><span>Residential inspections: electrical, HVAC, plumbing</span></button></div><p style="margin-top:16px">Engineering project portfolio. Built as an interactive HTML page.</p></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>n.toLocaleString('en-US',{maximumFractionDigits:1});
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ===== DATA: replace with the actual project data ===== */
+const BOM=[
+ {c:'Fastener',n:'Socket head cap screw',s:'M3 x 10',q:24,pn:''},
+ {c:'Fastener',n:'Socket head cap screw',s:'M4 x 16',q:12,pn:''},
+ {c:'Fastener',n:'Shoulder screw',s:'M4 x 20',q:6,pn:''},
+ {c:'Bearing',n:'Flanged ball bearing',s:'4 mm bore',q:8,pn:''},
+ {c:'Shafts',n:'Dowel pin',s:'3 mm',q:12,pn:''},
+ {c:'Shafts',n:'Shaft collar',s:'4 mm bore',q:6,pn:''},
+ {c:'Structure',n:'Aluminum standoff',s:'M3 x 20',q:10,pn:''},
+ {c:'Structure',n:'Heat-set threaded insert',s:'M3',q:30,pn:''}
+];
+const FLOW=[
+ ['Procurement','Standard parts such as bolts, bearings, pins, and standoffs were ordered per the BOM. Custom parts were fabricated in-house.'],
+ ['3D print fabrication','Structural parts were printed on a Bambu Lab 3D printer from the Fusion 360 model.'],
+ ['GD&T','Geometric Dimensioning and Testing on printed parts: dimensions and tolerances (hole diameters, flatness, fit) were checked against the CAD model before assembly.'],
+ ['Clash detection','Part interferences were detected in the 3D model. The design was revised and reprinted until no parts collided.'],
+ ['Validation and testing','Kinematic performance, design validation, and performance testing. Success criteria: walking without falling at 6 cm/s.']
+];
+const XML={k:`<mujoco model="bipedal">
+  <compiler angle="radian"/>
+  <worldbody>
+    <body name="torso" pos="0 0 0.5">
+      <freejoint/>
+      <geom type="box" size="0.08 0.06 0.10"/>
+      <body name="thigh_L" pos="0 0.05 -0.10">
+        <joint name="hip_L" type="hinge" axis="0 1 0" range="-1.2 1.2"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -0.16" size="0.015"/>
+        <body name="shank_L" pos="0 0 -0.16">
+          <joint name="knee_L" type="hinge" axis="0 1 0" range="0 2.2"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -0.16" size="0.012"/>
+        </body>
+      </body>
+      <!-- right leg: same structure -->
+    </body>
+  </worldbody>
+</mujoco>`,d:`<option timestep="0.002" gravity="0 0 -9.81"/>
+<default>
+  <joint damping="0.05" armature="0.01" frictionloss="0.01"/>
+  <geom friction="1 0.005 0.0001" density="1100"/>
+</default>
+<actuator>
+  <motor name="hip_L_act" joint="hip_L" ctrlrange="-1 1" gear="1"/>
+  <motor name="knee_L_act" joint="knee_L" ctrlrange="-1 1" gear="1"/>
+</actuator>`};
+const VID='2Uuj3mBlDGQ';
+
+/* ===== two-link inverse kinematics (y pointing down) ===== */
+function ik(l1,l2,x,d){
+ const r=Math.hypot(x,d),rc=Math.min(Math.max(r,Math.abs(l1-l2)+.5),l1+l2-.3),k=rc/r,X=x*k,D=d*k;
+ const c=Math.max(-1,Math.min(1,(rc*rc-l1*l1-l2*l2)/(2*l1*l2)));let o=null;
+ for(const s of[1,-1]){const q=s*Math.acos(c),b=Math.atan2(D,X)-Math.atan2(l2*Math.sin(q),l1+l2*Math.cos(q)),kx=l1*Math.cos(b),ky=l1*Math.sin(b);
+  if(!o||kx>o.kx)o={q,b,kx,ky,X,D,clamped:Math.abs(rc-r)>1e-6}}
+ return o}
+
+/* ===== hero: robot berjalan ===== */
+(function(){
+ const svg=$('#walker'),A=34,D0=122,H=26,hx=150,hy=96;
+ svg.innerHTML=`<line id="wg" x1="0" x2="300" y1="${hy+D0+6}" y2="${hy+D0+6}" stroke="var(--mu)" stroke-width="2" stroke-dasharray="10 14"/>
+ <polyline id="w1" fill="none" stroke="var(--mu)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+ <rect x="124" y="40" width="52" height="64" rx="8" fill="var(--sf)" stroke="var(--ink)" stroke-width="3"/>
+ <polyline id="w0" fill="none" stroke="var(--ink)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+ <circle cx="${hx}" cy="${hy}" r="8" fill="var(--ac)"/><circle id="k0" r="6" fill="var(--a2)"/><circle id="k1" r="6" fill="var(--a2)"/>`;
+ const draw=f=>{for(let i=0;i<2;i++){const ph=(f+i*Math.PI)%(2*Math.PI),x=ph<Math.PI?-A+2*A*ph/Math.PI:A-2*A*(ph-Math.PI)/Math.PI,d=D0-(ph<Math.PI?H*Math.sin(ph):0),o=ik(70,70,x,d);
+  $('#w'+i).setAttribute('points',`${hx},${hy} ${hx+o.kx},${hy+o.ky} ${hx+o.X},${hy+o.D}`);$('#k'+i).setAttribute('cx',hx+o.kx);$('#k'+i).setAttribute('cy',hy+o.ky)}
+  $('#wg').setAttribute('stroke-dashoffset',(2*A/Math.PI)*f)};
+ if(reduce)return draw(1.2);
+ const loop=ts=>{draw(ts/1000*2*Math.PI/1.6);requestAnimationFrame(loop)};requestAnimationFrame(loop);
+})();
+
+/* ===== widget kinematika & torsi ===== */
+const P=[['x','Foot forward offset',-15,15,6,.5,'cm'],['d','Vertical hip-to-foot distance',8,48,26,.5,'cm'],['l1','Thigh length',10,25,16,.5,'cm'],['l2','Shin length',10,25,16,.5,'cm'],['m','Robot mass',.5,10,2,.1,'kg'],['w','Joint speed',1,12,4,.5,'rad/s'],['sf','Safety factor',1,3,2,.1,'x']];
+$('#ctl').innerHTML=P.map(p=>`<label for="s_${p[0]}">${p[1]}<output id="o_${p[0]}"></output></label><input type="range" id="s_${p[0]}" min="${p[2]}" max="${p[3]}" step="${p[5]}" value="${p[4]}">`).join('');
+function leg(){
+ const v={};P.forEach(p=>{v[p[0]]=+$('#s_'+p[0]).value;$('#o_'+p[0]).textContent=fmt(v[p[0]])+' '+p[6]});
+ const o=ik(v.l1,v.l2,v.x,v.d),s=220/(v.l1+v.l2),hx=160,hy=24,F=v.m*9.81;
+ const kx=hx+o.kx*s,ky=hy+o.ky*s,fx=hx+o.X*s,fy=hy+o.D*s;
+ $('#lp').setAttribute('points',`${hx},${hy} ${kx},${ky} ${fx},${fy}`);
+ [['hj',hx,hy],['kj',kx,ky],['fj',fx,fy]].forEach(a=>{$('#'+a[0]).setAttribute('cx',a[1]);$('#'+a[0]).setAttribute('cy',a[2])});
+ $('#gl').setAttribute('y1',fy+8);$('#gl').setAttribute('y2',fy+8);
+ $('#gf').setAttribute('x1',fx);$('#gf').setAttribute('x2',fx);$('#gf').setAttribute('y1',fy);$('#gf').setAttribute('y2',hy);
+ const th=F*Math.abs(o.X)/100*v.sf,tk=F*Math.abs(o.X-o.kx)/100*v.sf,kg=10.197;
+ $('#out').innerHTML=`<dt>Hip angle</dt><dd>${fmt(90-o.b*180/Math.PI)} deg</dd><dt>Knee bend</dt><dd>${fmt(Math.abs(o.q)*180/Math.PI)} deg</dd>
+ <dt>Hip torque</dt><dd>${fmt(th)} N.m (${fmt(th*kg)} kg.cm)</dd><dt>Knee torque</dt><dd>${fmt(tk)} N.m (${fmt(tk*kg)} kg.cm)</dd>
+ <dt>Peak power per joint</dt><dd>${fmt(Math.max(th,tk)*v.w)} W</dd>${o.clamped?'<div class="warn">Target is out of reach, position limited.</div>':''}`}
+$('#ctl').addEventListener('input',leg);leg();
+
+/* ===== alur build 1.B ===== */
+let fi=0;
+function flow(){$('#flow').innerHTML=FLOW.map((f,i)=>`<button class="st" data-i="${i}" aria-pressed="${i==fi}">${f[0]}</button>`).join('');$('#fd').innerHTML=`<h3>${FLOW[fi][0]}</h3><p>${FLOW[fi][1]}</p>`}
+$('#flow').addEventListener('click',e=>{const b=e.target.closest('.st');if(b){fi=+b.dataset.i;flow()}});flow();
+
+/* ===== BOM + McMaster ===== */
+let cat='All';const got=new Set();
+const mc=b=>b.pn?`https://www.mcmaster.com/${encodeURIComponent(b.pn)}/`:`https://www.mcmaster.com/products/${b.n.toLowerCase().replace(/[^a-z0-9]+/g,'-')}/`;
+function bom(){
+ const cats=['All',...new Set(BOM.map(b=>b.c))];
+ $('#chips').innerHTML=cats.map(c=>`<button class="chip" data-c="${c}" aria-pressed="${c==cat}">${c}</button>`).join('');
+ $('#bom').innerHTML=BOM.map((b,i)=>({b,i})).filter(r=>cat=='All'||r.b.c==cat).map(({b,i})=>`<tr class="${got.has(i)?'on':''}"><td><input type="checkbox" data-i="${i}" ${got.has(i)?'checked':''} aria-label="Purchased: ${b.n}"></td><td>${b.n}</td><td>${b.s}</td><td>${b.q}</td><td>${b.c}</td><td><a href="${mc(b)}" target="_blank" rel="noopener">${b.pn||'Find part'}</a></td></tr>`).join('');
+ $('#pgb').style.width=got.size/BOM.length*100+'%';$('#pgt').textContent=`${got.size} of ${BOM.length} items purchased`}
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){cat=b.dataset.c;bom()}});
+$('#bom').addEventListener('change',e=>{const i=+e.target.dataset.i;e.target.checked?got.add(i):got.delete(i);bom()});bom();
+
+/* ===== XML ===== */
+function xml(k){$('#xml').textContent=XML[k];$$('#xsw .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.x==k))}
+$('#xsw').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)xml(b.dataset.x)});xml('k');
+
+/* ===== grafik kecepatan (skala log) ===== */
+const wd=v=>v/10*100;
+function bars(el,rows){el.innerHTML=rows.map(r=>`<div class="br"><span>${r[0]}</span><div class="bt"><i data-w="${wd(r[1])}"></i></div><b>${r[2]}</b></div>`).join('');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>el.querySelectorAll('i').forEach(i=>i.style.width=i.dataset.w+'%')))}
+
+/* ===== tab ===== */
+function show(id,go){
+ $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.t==id));$$('.panel').forEach(p=>p.hidden=p.id!=id);
+ if(id=='pC')bars($('#bC'),[['Physical robot (1.B)',6,'6 cm/s'],['MuJoCo + RL (1.C)',10,'10 cm/s']]);
+ if(id=='pD')bars($('#bD'),[['MuJoCo (1.C)',10,'10 cm/s'],['Physical robot (1.D)',10,'10 cm/s']]);
+ if(go)$('#tabs').scrollIntoView({behavior:reduce?'auto':'smooth'})}
+$$('.tab').forEach(t=>t.onclick=()=>show(t.dataset.t,false));
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)show(g.dataset.go,true)});
+
+/* ===== tema & video ===== */
+const R=document.documentElement;
+$('#th').onclick=()=>{const dk=R.dataset.theme?R.dataset.theme=='dark':matchMedia('(prefers-color-scheme:dark)').matches;R.dataset.theme=dk?'light':'dark'};
+$('#play').onclick=()=>{$('#vid').innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${VID}?rel=0" title="Bipedal Robot project video" allow="accelerometer;encrypted-media;picture-in-picture;fullscreen" allowfullscreen></iframe>`};
+/* ===== proyek 2: battery pack ===== */
+$$('.pb[data-p]').forEach(b=>b.onclick=()=>{$$('.pb[data-p]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==b.dataset.p));['p1','p2','p3','p4','p5'].forEach(id=>$('#'+id).hidden=id!=b.dataset.p);scrollTo(0,0)});
+$('#th2').onclick=()=>$('#th').click();
+const f3=n=>n.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3});
+const f2=n=>n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const OCV=[[0,2.5],[10,3.0],[20,3.2],[30,3.22],[40,3.25],[50,3.26],[60,3.27],[70,3.3],[80,3.32],[90,3.35],[100,3.4]];
+const ocv=s=>{for(let i=1;i<OCV.length;i++)if(s<=OCV[i][0]){const a=OCV[i-1],b=OCV[i];return a[1]+(b[1]-a[1])*(s-a[0])/(b[0]-a[0])}return 3.4};
+const sx=s=>50+5.7*s,sy=v=>300-(v-2.4)/1.3*280;
+(function(){
+ let o=`<rect x="${sx(20)}" y="20" width="${sx(90)-sx(20)}" height="280" fill="var(--ac)" opacity=".09"/><text x="${sx(55)}" y="292" text-anchor="middle" font-size="11" fill="var(--mu)">Flat plateau, about 20 to 90% SOC</text>`;
+ [2.6,2.8,3.0,3.2,3.4,3.6].forEach(v=>o+=`<line x1="50" x2="620" y1="${sy(v)}" y2="${sy(v)}" stroke="var(--ln)"/><text x="44" y="${sy(v)+4}" text-anchor="end" font-size="11" fill="var(--mu)">${v.toFixed(1)}</text>`);
+ for(let s=0;s<=100;s+=20)o+=`<text x="${sx(s)}" y="318" text-anchor="middle" font-size="11" fill="var(--mu)">${s}</text>`;
+ o+=`<text x="${sx(50)}" y="336" text-anchor="middle" font-size="11" fill="var(--mu)">SOC (%)</text><text transform="translate(12 160) rotate(-90)" text-anchor="middle" font-size="11" fill="var(--mu)">Cell voltage (V)</text>`;
+ [[3.65,'OVP 3.65 V','#d43d3d',0],[3.5,'SOC 100% 3.50 V','var(--a2)',0],[3.4,'Balance start 3.40 V','var(--ac)',0],[2.8,'UVP 2.80 V','#d43d3d',1]].forEach(([v,t,c,r])=>o+=`<line x1="50" x2="620" y1="${sy(v)}" y2="${sy(v)}" stroke="${c}" stroke-width="1.5" stroke-dasharray="6 4"/><text x="${r?614:56}" y="${sy(v)-5}" text-anchor="${r?'end':'start'}" font-size="11" font-weight="600" fill="${c}">${t}</text>`);
+ o+=`<polyline fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" points="${OCV.map(p=>sx(p[0])+','+sy(p[1])).join(' ')}"/>`;
+ o+=`<circle cx="${sx(18.7)}" cy="${sy(3.174)}" r="6" fill="var(--ok)"/><text x="${sx(18.7)+10}" y="${sy(3.174)+20}" font-size="11" fill="var(--ink)">Measured 3.174 V (pack 76.18 V)</text>`;
+ o+=`<circle cx="${sx(100)}" cy="${sy(3.435)}" r="6" fill="var(--ok)"/><text x="${sx(100)-10}" y="${sy(3.435)-26}" text-anchor="end" font-size="11" fill="var(--ink)">After charge 3.435 V (pack 82.43 V)</text>`;
+ o+=`<line id="sml" y1="20" y2="300" stroke="var(--a2)" stroke-width="1.5"/><circle id="smc" r="7" fill="var(--sf)" stroke="var(--a2)" stroke-width="3"/>`;
+ $('#soc').innerHTML=o;
+ const up=()=>{const s=+$('#socs').value,v=ocv(s);$('#soco').textContent=s+'%';['x1','x2'].forEach(a=>$('#sml').setAttribute(a,sx(s)));$('#smc').setAttribute('cx',sx(s));$('#smc').setAttribute('cy',sy(v));
+  $('#soci').innerHTML=`<dt>Cell voltage (OCV)</dt><dd>${f3(v)} V</dd><dt>Pack voltage (24 cells)</dt><dd>${f2(v*24)} V</dd><dt>Remaining energy</dt><dd>${f2(s/100*2.304)} kWh</dd>`};
+ $('#socs').addEventListener('input',up);up();
+})();
+const CV={a:[3.174,3.174,3.179,3.178,3.175,3.175,3.156,3.155,3.175,3.174,3.174,3.174,3.174,3.174,3.174,3.191,3.182,3.179,3.174,3.174,3.175,3.174,3.174,3.174],
+ b:[3.421,3.428,3.434,3.421,3.421,3.421,3.405,3.411,3.425,3.428,3.539,3.436,3.492,3.443,3.434,3.437,3.425,3.422,3.421,3.418,3.437,3.436,3.436,3.437]},CD={a:'0.036',b:'0.136'};
+function cvd(k){const d=CV[k],mn=Math.min(...d),mx=Math.max(...d),av=d.reduce((p,q)=>p+q)/24,lo=mn-.015,hi=mx+.008,y=v=>196-(v-lo)/(hi-lo)*170;let o='';
+ d.forEach((v,i)=>{const x=46+i*24;o+=`<rect x="${x}" y="${y(v)}" width="17" height="${196-y(v)}" rx="2" fill="${v==mn?'#d43d3d':v==mx?'var(--ac)':'var(--ok)'}"/><text x="${x+8.5}" y="212" font-size="9" text-anchor="middle" fill="var(--mu)">${i+1}</text>`});
+ o+=`<line x1="40" x2="626" y1="${y(av)}" y2="${y(av)}" stroke="var(--ink)" stroke-dasharray="4 4"/><text x="40" y="14" font-size="10" fill="var(--ink)">Dashed line: average ${f3(av)} V</text><text x="40" y="228" font-size="10" fill="var(--mu)">Cell number</text>`;
+ $('#cv').innerHTML=o;
+ $('#cvn').textContent=`Lowest: cell ${d.indexOf(mn)+1} (${f3(mn)} V). Highest: cell ${d.indexOf(mx)+1} (${f3(mx)} V). Difference per the BMS: ${CD[k]} V. The voltage axis is zoomed in so the differences are visible.`;
+ $$('#cvs .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k==k))}
+$('#cvs').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)cvd(b.dataset.k)});cvd('a');
+(function(){const W='#008400',S='#840000',F='#ffffc2',R='#006464',GL='#840084';let o='';
+ const L=(a,b,c,d,col=W,w=2)=>o+=`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="${col}" stroke-width="${w}" stroke-linecap="square"/>`;
+ const T=(x,y,t,col='#000',s=10,an='middle',ex='')=>o+=`<text x="${x}" y="${y}" fill="${col}" font-size="${s}" text-anchor="${an}" ${ex}>${t}</text>`;
+ const J=(x,y)=>o+=`<circle cx="${x}" cy="${y}" r="3.2" fill="${W}"/>`;
+ const G=(x,y,t,up)=>{const k=up?-1:1;o+=`<path d="M${x} ${y}L${x-13} ${y+k*6}L${x-13} ${y+k*20}L${x+13} ${y+k*20}L${x+13} ${y+k*6}Z" fill="#fff" stroke="${GL}"/>`;T(x,up?y-10:y+16,t,GL,8.5)};
+ o+=`<rect x="4" y="4" width="1112" height="632" fill="#f5f4ef" stroke="${S}" stroke-width="1.5"/><rect x="20" y="20" width="1080" height="600" fill="none" stroke="${S}"/>`;
+ for(let i=0;i<6;i++){const x=20+180*i;if(i){L(x,4,x,20,S,1);L(x,620,x,636,S,1)}T(x+90,16,i+1,S,10);T(x+90,632,i+1,S,10)}
+ 'ABCD'.split('').forEach((c,j)=>{const y=20+150*j;if(j){L(4,y,20,y,S,1);L(1100,y,1116,y,S,1)}T(12,y+79,c,S,10);T(1108,y+79,c,S,10)});
+ const cell=(x,y,n,nl)=>{const a=x+30,b=x+40,sh=nl?a:b,lg=nl?b:a;L(x,y,a,y);L(b,y,x+70,y);L(sh,y-7,sh,y+7,S,4);L(lg,y-14,lg,y+14,S,2);T(lg+(nl?5:-5),y-6,'+',S,11,nl?'start':'end');T(x+35,y-20,'BT'+n,R,9);T(x+35,y+30,'3.2V 30Ah',R,7.5)};
+ const x0=110,y1=110,y2=230;
+ for(let k=1;k<=12;k++)cell(x0+70*(k-1),y1,k,true);
+ for(let k=13;k<=24;k++)cell(x0+840-70*(k-13)-70,y2,k,false);
+ L(x0+840,y1,x0+840,y2);
+ for(let i=0;i<=12;i++){const x=x0+70*i;L(x,y1,x,y1-22);G(x,y1-22,'B'+i,true);J(x,y1)}
+ for(let i=13;i<=24;i++){const x=x0+840-70*(i-12);L(x,y2,x,y2+22);G(x,y2+22,'B'+i,false);J(x,y2)}
+ L(x0,y1,62,y1,W,3.5);L(62,y1,62,400,W,3.5);L(62,400,170,400,W,3.5);T(100,393,'BAT-',GL,9,'start');
+ L(x0,y2,86,y2,W,3.5);L(86,y2,86,540,W,3.5);L(86,540,1010,540,W,3.5);T(300,533,'PACK+',GL,9);
+ L(910,400,990,400,W,3.5);L(990,400,990,510,W,3.5);L(990,510,1010,510,W,3.5);T(996,460,'PACK-',GL,9,'start');
+ o+=`<rect x="200" y="330" width="680" height="140" fill="${F}" stroke="${S}" stroke-width="2"/>`;
+ L(170,400,200,400,S,1.5);T(208,404,'B-',S,10,'start');L(880,400,910,400,S,1.5);T(872,404,'P-',S,10,'end');
+ for(let i=0;i<=24;i++){const x=226+26.5*i;L(x,330,x,306,S,1.5);G(x,306,'B'+i,true);T(x,344,'B'+i,S,7)}
+ T(540,402,'U1',R,12);T(540,422,'JK-BMS 24S 100A',R,13,'middle','font-weight="700"');T(540,440,'Balance B0 to B24, temperature sensors T1 and T2',R,9);
+ [[470,'T1',1],[610,'T2',2]].forEach(([x,t,n])=>{L(x,470,x,488,S,1.5);T(x,464,t,S,8);o+=`<rect x="${x-6}" y="488" width="12" height="24" fill="none" stroke="${S}" stroke-width="2"/>`;L(x-11,516,x+11,484,S,1.2);L(x+11,484,x+16,484,S,1.2);T(x+18,500,'TH'+n,R,9,'start');T(x+18,512,'NTC on cell',R,8,'start')});
+ o+=`<rect x="1025" y="495" width="40" height="60" fill="${F}" stroke="${S}" stroke-width="2"/>`;L(1010,510,1025,510,S,1.5);L(1010,540,1025,540,S,1.5);T(1030,513,'P-',S,8,'start');T(1030,543,'P+',S,8,'start');T(1045,489,'J1',R,10);T(1045,568,'Output pack',R,8);
+ o+=`<rect x="700" y="582" width="400" height="38" fill="none" stroke="${S}"/>`;L(700,600,1100,600,S,1);T(708,595,'Battery Pack LFP 24S1P 72V 30Ah, JK-BMS 100A',S,10,'start','font-weight="700"');T(708,614,'A4 size    Rev 1.0    Sheet 1/1',S,9,'start');
+ $('#sch').innerHTML=o;
+})();
+const lb=$('#lb');
+document.addEventListener('click',e=>{const z=e.target.closest('.zm');if(z){const im=z.querySelector('img');$('#lbi').src=im.src;$('#lbc').textContent=im.alt;lb.showModal()}else if(e.target==lb||e.target.closest('#lbx'))lb.close()});
+/* ===== proyek 3: kelas robotika, demo A* ===== */
+(function(){const C=24,RW=12,el=$('#as'),id=(x,y)=>y*C+x,S=id(1,6),G=id(22,5);let wall=new Set(),busy=0;
+ el.style.gridTemplateColumns=`repeat(${C},1fr)`;
+ for(let i=0;i<C*RW;i++){const d=document.createElement('div');d.className='ac';el.appendChild(d)}
+ const cells=[...el.children];
+ const paint=()=>cells.forEach((d,i)=>d.className='ac'+(wall.has(i)?' w':'')+(i==S?' s':'')+(i==G?' g':''));
+ const def=()=>{wall=new Set();for(let y=0;y<9;y++)wall.add(id(7,y));for(let y=3;y<12;y++)wall.add(id(15,y));for(let x=9;x<14;x++)wall.add(id(x,3));paint()};
+ el.addEventListener('click',e=>{const i=cells.indexOf(e.target);if(i<0||busy||i==S||i==G)return;wall.has(i)?wall.delete(i):wall.add(i);paint()});
+ $('#asx').onclick=()=>{if(busy)return;wall=new Set();for(let i=0;i<C*RW;i++)if(i!=S&&i!=G&&Math.random()<.28)wall.add(i);paint()};
+ $('#asc').onclick=()=>{if(busy)return;wall=new Set();paint()};
+ $('#asr').onclick=()=>{if(busy)return;paint();
+  const h=i=>Math.abs(i%C-G%C)+Math.abs((i/C|0)-(G/C|0)),open=[S],came=new Map(),gs=new Map([[S,0]]),closed=new Set(),seen=[];
+  while(open.length){open.sort((a,b)=>gs.get(a)+h(a)-gs.get(b)-h(b));const c=open.shift();if(closed.has(c))continue;closed.add(c);seen.push(c);if(c==G)break;
+   const x=c%C,y=c/C|0;for(const[dx,dy]of[[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=C||ny>=RW)continue;const n=id(nx,ny);if(wall.has(n)||closed.has(n))continue;const t=gs.get(c)+1;if(t<(gs.get(n)??1e9)){gs.set(n,t);came.set(n,c);open.push(n)}}}
+  const path=[];if(closed.has(G)){let c=G;while(c!=null){path.unshift(c);c=came.get(c)}}
+  const vis=seen.filter(i=>i!=S&&i!=G),pth=path.filter(i=>i!=S&&i!=G);
+  const done=()=>{busy=0;$('#asn').textContent=path.length?`Cells explored: ${seen.length}. Path length: ${path.length-1} steps.`:'No path found. Remove some obstacles and try again.'};
+  if(reduce){vis.forEach(i=>cells[i].classList.add('v'));pth.forEach(i=>cells[i].classList.add('p'));return done()}
+  busy=1;let k=0;const step=()=>{for(let n=0;n<4&&k<vis.length;n++,k++)cells[vis[k]].classList.add('v');if(k<vis.length)return requestAnimationFrame(step);
+   let j=0;const ps=()=>{if(j<pth.length){cells[pth[j++]].classList.add('p');setTimeout(ps,25)}else done()};ps()};step()};
+ def();
+})();
+/* ===== proyek 4: distribusi daya industri ===== */
+(function(){
+ const CAT={src:['Source','var(--ink)'],dist:['Main distribution','var(--ac)'],prod:['Production','#8a5cf6'],hvac:['HVAC','#0e9aa7'],emg:['Emergency','var(--a2)'],crit:['Critical (UPS)','#d43d3d'],en:['Energy (BESS and PV)','var(--ok)']};
+ const nd=(md,vd,isc,ief,ipk,af,afb,ppe)=>[['Max demand',md],['Segment voltage drop',vd],['Isc max / min',isc],['Ief',ief],['Ipk',ipk],['Arc flash',af],['Arc flash boundary',afb],['Arc-rated PPE',ppe]];
+ const EN={
+  u:{b:'Utility 20 kV',bs:'JIIPE',t:'20 kV utility supply',s:'From the JIIPE estate substation',c:'src',x:425,y:8,d:[['Voltage','20 kV'],['MV cable','N2XSYEBY 3c x 120 mm²']]},
+  tr:{b:'Transformer 2,500 kVA',bs:'20 kV / 400 V',t:'Main transformer 2,500 kVA',s:'20 kV / 400 V',c:'src',x:425,y:88,d:[['Isc max / min','59.0 / 50.8 kA'],['Ief','53.2 kA']]},
+  msb:{b:'MSB 3,200 A',bs:'Main switchboard',t:'Main Switchboard',s:'3,200 A, 3-phase',c:'dist',x:425,y:168,d:nd('2,522.1 A','0.43%','55.1 / 47.3 kA','29.7 kA','121.2 kA','24.6 cal/cm² at 610 mm','4,038 mm','25 cal/cm²')},
+  pfc:{b:'PFC 400 kVAr',bs:'Capacitor bank',t:'PFC Bank 1',s:'400 kVAr, automatic',c:'dist',x:105,y:258,d:[['Power factor','0.87 to 0.96'],['Capacitor current','577 A, design 779 A'],['Controller','PFC controller + CT on the mains side']]},
+  mdp:{b:'MDP 2,500 A',bs:'Main distribution',t:'Main Distribution Panel',s:'2,500 A, 3-phase',c:'dist',x:425,y:258,d:nd('2,263.3 A','0.68%','49.2 / 41.9 kA','24.1 kA','103.3 kA','10.1 cal/cm² at 457 mm','1,732 mm','25 cal/cm²')},
+  util:{b:'SDP Utility 315 A',bs:'Support facilities',t:'SDP Power Utility',s:'315 A, 3-phase',c:'hvac',x:745,y:258,d:nd('258.8 A','0.58%','33.5 / 26.1 kA','10.8 kA','70.3 kA','26.7 cal/cm² at 457 mm','3,189 mm','40 cal/cm²'),l:['WWTP 50 kW','Utility Workshop 21 kW','Compressor 16.3 kW','Canteen 13.6 kW','Mosque 13.5 kW','Sports Center 10 kW','HSE and Clinic 10 kW','and other utility loads']},
+  ma:{b:'SDP Machine A',bs:'400 A',t:'SDP Machine A',s:'400 A, 3-phase',c:'prod',x:14,y:348,d:nd('341.0 A','0.65%','31.0 / 24.8 kA','10.1 kA','65.0 kA','25.1 cal/cm² at 457 mm','3,062 mm','40 cal/cm²'),l:['Minting 110 kW','PVD Coating 73.5 kW','Hardening 39 kW','Packaging 20 kW','Laser Engraving 6 kW','Dies and Lab 2.5 kW']},
+  mb:{b:'SDP Machine B',bs:'160 A',t:'SDP Machine B',s:'160 A, 3-phase',c:'prod',x:176,y:348,d:nd('136.8 A','0.42%','27.6 / 20.8 kA','9.2 kA','57.9 kA','1.8 cal/cm² at 457 mm','591 mm','4 cal/cm²'),l:['Weight Correction 40 kW','Surface Finishing 33.4 kW','Rolling 22 kW','Laser Marking 5 kW']},
+  hv:{b:'FCU and Exhaust Fans',bs:'3 panels x 20 A',t:'FCU and Exhaust Fan Panels',s:'3 panels, 20 A each',c:'hvac',x:338,y:348,d:nd('1.4 to 4.6 A','0.01 to 0.02%','23.0 / 16.8 kA','7.4 kA','48.3 kA','3.8 cal/cm² at 457 mm','944 mm','4 cal/cm²'),l:['FCU levels 1 and 2','Exhaust fans EF 1.01 to 2.03']},
+  ats:{b:'ATS / AMF',bs:'1,600 A, ATS 2,500 A 4P',t:'ATS / AMF',s:'Bus 1,600 A, ATS 2,500 A 4-pole',c:'emg',x:500,y:348,d:nd('1,596.0 A','0.39%','45.4 / 38.5 kA','20.8 kA','95.4 kA','33.3 cal/cm² at 457 mm','3,661 mm','40 cal/cm²'),l:['Melting and Casting 260 kW','Annealing 100 kW','Security posts and rooms']},
+  ups:{b:'SDP UPS 63 A',bs:'Critical loads',t:'SDP UPS',s:'63 A, 3-phase',c:'crit',x:662,y:348,d:nd('51.2 A','0.22%','23.0 / 16.8 kA','7.4 kA','48.3 kA','3.8 cal/cm² at 457 mm','944 mm','4 cal/cm²'),l:['CCTV 7.5 kW','Security 10 kW','ICT 10 kW','Fire Alarm 1 kW']},
+  bess:{b:'SDP BESS 160 A',bs:'Energy branch',t:'SDP BESS',s:'160 A, 3-phase',c:'en',x:824,y:348,d:nd('153.5 A','0.52%','25.3 / 19.2 kA','7.5 kA','53.2 kA','1.7 cal/cm² at 457 mm','563 mm','4 cal/cm²'),l:['Lighting level 1 30 kW','Lighting level 2 6.7 kW','Outdoor 10.8 kW']},
+  gen:{b:'Generator 1,500 kVA',bs:'Standby',t:'Standby generator 1,500 kVA',s:'400 V, about 2,165 A FLC',c:'emg',x:338,y:430,d:[['Generator Isc / Ief','21.7 / 23.5 kA'],['Transfer','Via automatic ATS / AMF'],['Neutral','Switched, separately derived']]},
+  mcc:{b:'SDP MCC 1,000 A',bs:'Chillers and pumps',t:'SDP MCC',s:'1,000 A, 3-phase',c:'emg',x:500,y:430,d:nd('989.6 A','0.70%','37.1 / 30.8 kA','14.5 kA','77.9 kA','29.0 cal/cm² at 457 mm','3,353 mm','40 cal/cm²'),l:['3 x Air Cooled Chiller 186 kW','3 x Chiller Water Pump 5.5 kW','Electric Fire Pump 14.73 kW','Jockey Pump 1.135 kW']},
+  upsu:{b:'UPS 38 kVA',bs:'VRLA 21 kWh',t:'UPS 38 kVA',s:'21 kWh VRLA battery, 30-minute backup',c:'crit',x:662,y:430,d:[['Voltage rise','0.36% (limit 2.00%), pass'],['Protection','Trip contactor driven by the grid protection relay']]},
+  pv:{b:'BESS 1 MWh + PV',bs:'220 kWp',t:'BESS 1 MWh and PV 220 kWp',s:'Connected through the PV + BESS inverter',c:'en',x:824,y:430,d:[['BESS','LFP 1 MWh, max DoD 80%'],['PV','400 x 550 Wp = 220 kWp'],['Voltage rise','1.82% (limit 2.00%), pass'],['Protection','Trip contactor driven by the grid protection relay']]}};
+ const BW=150,BH=50,cx=k=>EN[k].x+BW/2;let o='';
+ const ln=(a,b,c,d,ex='')=>o+=`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="var(--mu)" stroke-width="2" ${ex}/>`;
+ const bus=(p,ks,y)=>{ln(cx(p),EN[p].y+BH,cx(p),y);const xs=ks.map(cx);ln(Math.min(...xs,cx(p)),y,Math.max(...xs,cx(p)),y);ks.forEach(k=>ln(cx(k),y,cx(k),EN[k].y))};
+ ln(500,58,500,88);ln(500,138,500,168);bus('msb',['pfc','mdp','util'],238);bus('mdp',['ma','mb','hv','ats','ups','bess'],328);
+ ln(575,398,575,430);ln(737,398,737,430);ln(899,398,899,430);
+ ln(413,430,413,414,'stroke-dasharray="5 4"');ln(413,414,540,414,'stroke-dasharray="5 4"');ln(540,414,540,398,'stroke-dasharray="5 4"');
+ Object.entries(EN).forEach(([k,n])=>o+=`<g class="nd" data-k="${k}" tabindex="0" role="button" aria-label="${n.t}"><rect x="${n.x}" y="${n.y}" width="${BW}" height="${BH}" rx="7" fill="var(--sf)" stroke="${CAT[n.c][1]}" stroke-width="2"/><rect x="${n.x}" y="${n.y}" width="6" height="${BH}" rx="3" fill="${CAT[n.c][1]}"/><text x="${n.x+BW/2+3}" y="${n.y+22}" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">${n.b}</text><text x="${n.x+BW/2+3}" y="${n.y+39}" text-anchor="middle" font-size="10.5" fill="var(--mu)">${n.bs}</text></g>`);
+ const svg=$('#sld');svg.innerHTML=o;
+ $('#sldl').innerHTML=Object.values(CAT).map(c=>`<span><i style="background:${c[1]}"></i>${c[0]}</span>`).join('')+'<span>Dashed line: generator standby supply</span>';
+ const sel=k=>{const n=EN[k];svg.querySelectorAll('.nd').forEach(g=>g.classList.toggle('on',g.dataset.k==k));
+  $('#nd').innerHTML=`<p class="note" style="margin:0 0 4px;color:${CAT[n.c][1]};font-weight:600">${CAT[n.c][0]}</p><h3>${n.t}</h3><p class="sub" style="margin-bottom:4px">${n.s}</p><dl>${n.d.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>${n.l?`<div class="tags">${n.l.map(x=>`<span>${x}</span>`).join('')}</div>`:''}`};
+ svg.addEventListener('click',e=>{const g=e.target.closest('.nd');if(g)sel(g.dataset.k)});
+ svg.addEventListener('keydown',e=>{const g=e.target.closest('.nd');if(g&&(e.key=='Enter'||e.key==' ')){e.preventDefault();sel(g.dataset.k)}});
+ sel('msb');
+ const B=[['ATS / AMF',33.34,45.4],['SDP MCC',28.97,37.1],['SDP Power Utility',26.74,33.5],['SDP Machine A',25.06,31.0],['MSB',24.62,55.1],['MDP',10.08,49.2],['FCU and EF panels',3.82,23.0],['SDP UPS',3.82,23.0],['SDP Machine B',1.81,27.6],['SDP BESS',1.67,25.3]];
+ const PPE=v=>v>25?['PPE 40 cal/cm²','#d43d3d']:v>4?['PPE 25 cal/cm²','var(--a2)']:['PPE 4 cal/cm²','var(--ok)'];
+ const chart=m=>{const i=m=='af'?1:2,rows=[...B].sort((a,b)=>b[i]-a[i]),mx=Math.max(...rows.map(r=>r[i]));let s='';
+  rows.forEach((r,j)=>{const y=8+j*31,w=r[i]/mx*400,c=m=='af'?PPE(r[1])[1]:'var(--ac)';s+=`<text x="148" y="${y+16}" text-anchor="end" font-size="12" fill="var(--ink)">${r[0]}</text><rect x="156" y="${y+3}" width="${Math.max(w,2)}" height="18" rx="3" fill="${c}"/><text x="${162+w}" y="${y+16}" font-size="12" font-weight="600" fill="var(--ink)">${r[i].toLocaleString('en-US')} ${m=='af'?'cal/cm²':'kA'}</text>`});
+  $('#ech').innerHTML=s;
+  $('#echl').innerHTML=m=='af'?[PPE(30),PPE(10),PPE(2)].map(p=>`<span><i style="background:${p[1]}"></i>${p[0]}</span>`).join('')+'<span>PPE category per the arc flash schedule</span>':'<span><i style="background:var(--ac)"></i>Maximum short-circuit current (kA)</span>';
+  $$('#ems .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.m==m))};
+ $('#ems').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)chart(b.dataset.m)});chart('af');
+})();
+/* ===== proyek 5: MEP inspection; tambah inspeksi baru di array INS ===== */
+(function(){
+ const INS=[
+  {id:'pkl',t:'Residential house, Pondok Kelapa',a:'Durensawit, East Jakarta',d:'11 October 2026',b:'Two-story house',pk:'Electrical and Plumbing',
+   g:[['Electrical','D'],['Plumbing','D']],
+   hi:['18 socket outlets tested','L-N voltage 203 to 210 V, within tolerance','Leakage current detected on the clean water line'],
+   f:[['Electrical','Electrical leakage on the clean water line from the pump','d','Urgent'],['Electrical','Earthing system not detected: no grounding terminal or grounding rod found','d','Urgent'],['Electrical','Distribution panel: untidy MCB terminations, joints wrapped in tape','d','High'],['Electrical','Socket outlets: 7 of 18 points nonconforming; N-E voltage 13.3 V at 1 point','d','High'],['Electrical','Lightning protection: air terminal present, no copper down rod found','p','Medium'],['Electrical','Supporting installation: lighting cables, gate motor, sockets, and switches need work','p','Low'],['Plumbing','Clean water pump leaks current into the clean water line','d','Urgent'],['Plumbing','Kitchen: cabinet very damp, sink drain without grease trap or P-trap','p','Medium']],
+   rab:37462500,viz:'sock',
+   ph:[['assets/9d816de4cf60.jpg','NCV test pen detecting voltage on the clean water pipe'],['assets/358e57e15420.jpg','Distribution panel condition'],['assets/462035f5d926.jpg','Socket tester: L-N reversed in the kitchen near the sink'],['assets/d48c51412df4.jpg','Socket tester: N-E voltage 13.3 V on the TV outlet']]},
+  {id:'cpt',t:'Residential house, Cipete',a:'South Jakarta',d:'3 to 4 October 2026',b:'Main building and external building',pk:'HVAC, Plumbing, Electrical (pre-handover / BAST)',
+   g:[['Electrical','D'],['HVAC','D'],['Plumbing','A']],
+   hi:['16 split AC units tested, 80 samples','3 panels: DB1, DB2, EV Charger Panel','Phase load deviation DB1 19.6%, DB2 65.8%'],
+   f:[['Electrical','Earthing system not working: grounding rod not installed','d','Urgent'],['Electrical','No lightning protection system','d','Urgent'],['Electrical','No RCD/ELCB in DB1, DB2, or the EV Charger Panel','d','High'],['Electrical','Electric stove and pool pump cable joints only wrapped in tape','d','High'],['Electrical','DB1 outgoing MCCB terminations without cable lugs','d','High'],['Electrical','Uneven phase loading (DB1 19.6%, DB2 65.8%)','p','Medium'],['HVAC','4 AC units FAILED: supply air no cooler than the room','d','High'],['HVAC','9 AC units REVIEW: cooling, not yet optimal','p','Medium']],
+   rab:26961900,viz:'hvac',
+   ph:[['assets/51777e7f9f06.jpg','Voltage and current measurement at DB1'],['assets/67780ddde3fc.jpg','Test pen detecting leakage current on the refrigerator'],['assets/a92a6c75d445.jpg','Panel DB 2 power meter showing unbalanced phase currents'],['assets/e5451c68cbd4.jpg','Anemometer: AC outlet air speed and temperature']]}];
+ const SOCK=[[1,'Living Room 1',210,1,'0.5',1,'Near the sofa','o'],[2,'Main Room 1',209,1,'0.5',1,'','o'],[3,'Main Room 2',209,1,'0.5',1,'Water dispenser','o'],[4,'Main Room 3',209,1,'13.3',1,'TV; N-E voltage far above the other points','p'],[5,'Prayer Room',205,1,'0.5',1,'','o'],[6,'Kitchen 1',203,1,'0.5',1,'Rice cooker','o'],[7,'Kitchen 2',205,1,'0.5',1,'','o'],[8,'Kitchen 3',207,0,'0.4',0,'Near the sink; L and N reversed','d'],[9,'Bedroom 1',205,1,'0.5',1,'','o'],[10,'Bedroom 2',209,1,'0.4',1,'','o'],[11,'Laundry Room',206,0,'0.0',0,'Washing machine outlet; no earthing','d'],[12,'Garage 1',206,0,'0.3',0,'L-N reversed','d'],[13,'Garage 2',207,0,'0.0',1,'No earth conductor','d'],[14,'Pump Room',204,0,'0.3',0,'L-N reversed','d'],[15,'Maid Room L2',210,1,'0.5',1,'','o'],[16,'Master Bedroom 1',209,1,'0.5',1,'Behind the main desk','o'],[17,'Master Bedroom 2',207,0,'0.0',1,'No earth conductor','d'],[18,'Master Bathroom',208,1,'0.3',0,'L-N reversed','d']];
+ const HV=[['Master Bedroom',1.4],['Walking Closet',2.3],['Senior Room AC1',1.6],['Senior Room AC2',-1.9],["Child's Room lt.2",3.4],['Living lt.2 AC1',1.5],['Living lt.2 AC2',-0.5],['Living lt.2 AC3',0.4],['Living lt.1 AC1',1.4],['Living lt.1 AC2',2.3],['Living lt.1 AC3',3.7],['Front Room lt.1',2.4],['Rack Router lt.1',2.0],['Multipurpose 1 (Ext.)',-1.2],['Multipurpose 2 (Ext.)',-2.0],['Multipurpose 3 (Ext.)',9.1]];
+ const GC={A:'#0d7a54',B:'#4f9a5a',C:'#c99400',D:'#d43d3d',E:'#7a1616'},SN={o:'OK',p:'Needs Attention',d:'Defect',n:'Not Available'},SC={o:'var(--ok)',p:'#f0c040',d:'#d43d3d'};
+ const rp=n=>'Rp '+n.toLocaleString('en-US');
+ const all=INS.flatMap(x=>x.f);
+ $('#mi1').textContent=INS.length;$('#mi2').textContent=all.length;
+ $('#mi3').innerHTML=`${all.filter(f=>f[2]=='d').length} <i>/ ${all.filter(f=>f[3]=='Urgent').length} urgent</i>`;
+ $('#mi4').innerHTML=`${(INS.reduce((s,x)=>s+x.rab,0)/1e6).toLocaleString('en-US',{maximumFractionDigits:1})} <i>million</i>`;
+ $('#gscale').innerHTML=[['A','No findings'],['B','Minor findings only'],['C','Non-safety defect'],['D','Safety defect / most units underperforming'],['E','System not functioning']].map(([g,t])=>`<div class="gd" style="background:${GC[g]};max-width:170px"><b>${g}</b><span>${t}</span></div>`).join('');
+ const hvac=()=>{const x0=170,sc=440/13,z=x0+3*sc;let s=`<line x1="${z}" x2="${z}" y1="6" y2="300" stroke="var(--mu)"/><line x1="${z+3*sc}" x2="${z+3*sc}" y1="6" y2="300" stroke="var(--ok)" stroke-dasharray="5 4"/><text x="${z+3*sc+4}" y="314" font-size="11" fill="var(--ok)">PASS limit 3 °C</text><text x="${z}" y="314" font-size="11" text-anchor="middle" fill="var(--mu)">0</text>`;
+  HV.forEach(([n,v],i)=>{const y=8+i*18,c=v>=3?'var(--ok)':v>=0?'#e0a800':'#d43d3d',x=v<0?z+v*sc:z;s+=`<text x="${x0-8}" y="${y+12}" text-anchor="end" font-size="11" fill="var(--ink)">${i+1}. ${n}</text><rect x="${x}" y="${y+2}" width="${Math.max(Math.abs(v)*sc,2)}" height="13" rx="2" fill="${c}"/><text x="${v<0?x-4:x+Math.abs(v)*sc+4}" y="${y+12}" text-anchor="${v<0?'end':'start'}" font-size="11" font-weight="600" fill="var(--ink)">${v.toLocaleString('en-US')}</text>`});
+  return `<h3>HVAC: Room-Supply ΔT per unit (°C)</h3><div class="c"><svg id="hv" viewBox="0 0 640 322" role="img" aria-label="Delta T chart for 16 AC units" font-family="IBM Plex Sans,system-ui,sans-serif">${s}</svg><div class="leg"><span><i style="background:var(--ok)"></i>PASS: 3 unit</span><span><i style="background:#e0a800"></i>REVIEW: 9 unit</span><span><i style="background:#d43d3d"></i>FAILED: 4 unit</span></div><p class="note">The three Multipurpose Room units in the external building are all 1 PK, yet their results differ: Room 3 PASSED with a ΔT of 9.1 °C, while Rooms 1 and 2 FAILED. Sun exposure is not the only factor; each unit’s actual capacity and the room’s cooling load need to be evaluated room by room.</p></div>
+  <div class="kv"><span>DB1: R 14.95 A, S 12.13 A, T 10.42 A, deviation 19.6%</span><span>DB2: R 8.696 A, S 1.654 A, T 5.383 A, deviation 65.8%</span></div>`};
+ const sock=()=>`<h3>Map of 18 socket outlets</h3><p class="note">Click a point to see the socket tester result. Earthing present at 12 points, wrong polarity at 5 points.</p><div class="sk" id="skg">${SOCK.map(s=>`<button type="button" data-n="${s[0]}" style="border-left-color:${SC[s[7]]}" aria-pressed="false"><b>${s[0]}. ${s[1]}</b>${SN[s[7]]}</button>`).join('')}</div><div class="c" id="skd" style="min-height:56px"><p class="note" style="margin:0">Choose a point.</p></div>`;
+ const skSel=n=>{const s=SOCK.find(x=>x[0]==n);$$('#skg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.n==n));$('#skd').innerHTML=`<div class="insh"><h3 style="margin:0">${s[0]}. ${s[1]}</h3><span class="sp ${s[7]}">${SN[s[7]]}</span></div><div class="kv"><span>V L-N ${s[2]} V</span><span>V N-E ${s[4]} V</span><span>Earthing: ${s[3]?'Present':'None'}</span><span>Polarity: ${s[5]?'Correct':'Wrong'}</span></div>${s[6]?`<p class="note">${s[6]}</p>`:''}`};
+ const show=id=>{const x=INS.find(i=>i.id==id);$$('#insc .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.i==id));
+  $('#insd').innerHTML=`<div class="c" style="margin-top:6px"><div class="insh"><div><h3 style="font-size:20px;margin-bottom:2px">${x.t}</h3><p class="note" style="margin:0">${x.a}. ${x.b}. Inspected ${x.d}.</p></div><span class="kv" style="margin:0"><span>Package: ${x.pk}</span></span></div>
+  <div class="gds">${x.g.map(([s,g])=>`<div class="gd" style="background:${GC[g]}"><b>${g}</b><span>${s}</span></div>`).join('')}</div>
+  <div class="kv">${x.hi.map(h=>`<span>${h}</span>`).join('')}</div></div>
+  ${x.viz=='hvac'?hvac():sock()}
+  <h3>Key findings</h3><div class="tw"><table><thead><tr><th>No</th><th>System</th><th>Finding</th><th>Status</th><th>Priority</th></tr></thead><tbody>${x.f.map((f,i)=>`<tr><td>${i+1}</td><td>${f[0]}</td><td>${f[1]}</td><td><span class="sp ${f[2]}">${SN[f[2]]}</span></td><td>${f[3]}</td></tr>`).join('')}</tbody></table></div>
+  <p style="margin-top:12px">Repair recommendations were prepared per finding, with a cost estimate (RAB). Estimated total: <b>${rp(x.rab)}</b> incl. 11% VAT.</p>
+  <h3>Field documentation</h3><div class="ph2">${x.ph.map(p=>`<button class="zm" type="button"><img src="${p[0]}" alt="${p[1]}" loading="lazy"></button>`).join('')}</div>`;
+  if(x.viz=='sock')skSel(4)};
+ $('#insc').innerHTML=INS.map((x,i)=>`<button class="chip" data-i="${x.id}" aria-pressed="${!i}">${x.t.replace('Residential house, ','')}, ${x.d.replace(/^.*?(\d+ \w+ \d{4})$/,'$1')}</button>`).join('');
+ $('#insc').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)show(b.dataset.i)});
+ $('#insd').addEventListener('click',e=>{const b=e.target.closest('#skg button');if(b)skSel(+b.dataset.n)});
+ show(INS[0].id);
+})();
+</script>
+</body>
+</html>
